@@ -1,0 +1,44 @@
+/* Estilos boton color lila */
+.btn-bd-primary{font-weight:600;color:#fff;background-color:#7952b3;border-color:#7952b3}
+.btn-bd-primary:hover,.btn-bd-primary:active{color:#fff;background-color:#61428f;border-color:#61428f}
+.btn-bd-primary:focus{box-shadow:0 0 0 3px rgba(121,82,179,0.25)}
+
+.bg-image-vertical {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+}
+    
+@media (min-width: 1025px) {
+    .h-custom-2 {
+        height: 100%;
+    }
+}
+
+.salto{
+    padding-bottom: 10px;
+}
+
+.saltoC{
+    padding-bottom: 5px;
+}
+
+.saltoxl{
+    padding-bottom: 20px;
+}
+
+.letra{
+    font-family: 'Inter';
+}
+
+.sinsalto{
+    display: inline;
+    font-family: 'Inter';
+}
+
+.imagenI{
+    object-fit: cover; 
+    object-position: left;
+}
