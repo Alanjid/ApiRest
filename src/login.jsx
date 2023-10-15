@@ -58,7 +58,7 @@ function login() {
                         setPass(event.target.value);
                         }} 
                         className="form-control" value={Pass} placeholder="Contraseña"/>
-                      <label for="pass">CONTRASEÑA123</label>
+                      <label for="pass">CONTRASEÑA</label>
                     </div>
                     <div className="form-check form-switch salto">
                       <input className="form-check-input" name="duradera" type="checkbox" role="switch" id="duradera"/>
