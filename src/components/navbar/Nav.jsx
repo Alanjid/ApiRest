@@ -1,44 +1,39 @@
-import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from "react";
+import "./Nav.css";
+import { Link, NavLink } from "react-router-dom";
+import { FaUserCircle } from "react-icons/Fa";
 
 const Nav = ({disable}) => {
+    const [menuOpen, setMenuOpen] = useState(false);
     return (
         <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container">
-                <a class="navbar-brand me-2" href="#">
-                    <img
-                    src="images/LogoMyTEAPony.png"
-                    height="40"
-                    alt="MyTEAPony Logo"
-                    loading="lazy"
-                    style={{marginTop: "-1px;"}}
-                    />
-                </a>
-
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarButtonsExample"
-                    aria-controls="navbarButtonsExample"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <i class="fas fa-bars"></i>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarButtonsExample">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"></a>
+            <nav>
+                <Link to="/" className="title">
+                    <div class="container">
+                        <img
+                        src="images/LogoMyTEAPony.png"
+                        height="40"
+                        alt="MyTEAPony Logo"
+                        loading="lazy"
+                        style={{marginTop: "-1px;"}}
+                        />
+                    </div>
+                </Link>
+                <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul className={menuOpen ? "open" : ""}>
+                    <li>
+                    <a href='./'><button type="button" class="btn btn-outline-primary me-3">PACIENTES</button></a>
                     </li>
-                    </ul>
-
-                    <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-outline-primary me-3">PACIENTES</button>
-                    <button type="button" class="btn btn-outline-primary me-3">ACTIVIDADES</button>
-                    <a class="navbar-brand me-2" href="#">
+                    <li>
+                    <a href=''><button type="button" class="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
+                    </li>
+                    <li>
+                    <a class="navbar-brand me-2" href="#" style={{paddingTop: "0.5rem"}}>
                         <img
                         src="images/icon.png"
                         height="40"
@@ -47,9 +42,8 @@ const Nav = ({disable}) => {
                         style={{marginTop: "-1px;"}}
                         />
                     </a>
-                    </div>
-                </div>
-                </div>
+                    </li>
+                </ul>
             </nav>
         </div>
     )

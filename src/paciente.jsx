@@ -3,13 +3,14 @@ import Navbar from './components/navbar/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import LeftVar from './components/leftvar/leftvar'
 
-function index() {
+
+function paciente() {
   return (
     <div>
-      <Navbar/>
-      <LeftVar/>
+        <Navbar/>
+        <LeftVar/>
     </div>
   )
 }
 
-export default index
+export default paciente
