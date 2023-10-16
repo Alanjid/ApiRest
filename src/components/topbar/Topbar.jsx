@@ -1,0 +1,31 @@
+import { Box, IconButton } from "@mui/material";
+
+const Topbar = () => {
+
+  return (
+    <Box display="flex" justifyContent="space-between" p={1} sx={{borderBottom: '4px solid #F0F3FB'}}>
+      {/* Separador*/}
+      <Box
+        display="flex"
+        borderRadius="3px"
+      >
+      </Box>
+
+      {/* Menu */}
+      <Box display="flex">
+        <a href='./' style={{marginRight: '1.5rem'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
+        <a href='' style={{marginRight: '1.5rem'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
+        <a className="navbar-brand me-2" href="#" style={{paddingBottom: "1rem"}}>
+            <img
+            src="images/icon.png"
+            height="40"
+            alt=""
+            loading="lazy"
+            />
+        </a>
+      </Box>
+    </Box>
+  );
+};
+
+export default Topbar;

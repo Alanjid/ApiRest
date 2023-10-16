@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -14,6 +13,7 @@ import Login from "./login";
 import Index from "./index";
 import Registro from "./registro";
 import Error from "./error";
+import Pacientes from "./pacientes"
 
 const router = createBrowserRouter([
   {
@@ -27,6 +27,9 @@ const router = createBrowserRouter([
   {
     path:"/registrate",
     element: <Registro/>,
+  },{
+    path:"/informacion",
+    element: <Pacientes/>,
   },{
     path:"*",
     element: <Error/>,

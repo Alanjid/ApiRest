@@ -10,7 +10,7 @@ const Nav = ({disable}) => {
         <div>
             <nav>
                 <Link to="/" className="title">
-                    <div class="container">
+                    <div className="container">
                         <img
                         src="images/LogoMyTEAPony.png"
                         height="40"
@@ -27,13 +27,13 @@ const Nav = ({disable}) => {
                 </div>
                 <ul className={menuOpen ? "open" : ""}>
                     <li>
-                    <a href='./'><button type="button" class="btn btn-outline-primary me-3">PACIENTES</button></a>
+                    <a href='./'><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
                     </li>
                     <li>
-                    <a href=''><button type="button" class="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
+                    <a href=''><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
                     </li>
                     <li>
-                    <a class="navbar-brand me-2" href="#" style={{paddingTop: "0.5rem"}}>
+                    <a className="navbar-brand me-2" href="#" style={{paddingTop: "0.5rem"}}>
                         <img
                         src="images/icon.png"
                         height="40"
