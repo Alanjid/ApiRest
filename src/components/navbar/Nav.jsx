@@ -16,7 +16,6 @@ const Nav = ({disable}) => {
                         height="40"
                         alt="MyTEAPony Logo"
                         loading="lazy"
-                        style={{marginTop: "-1px;"}}
                         />
                     </div>
                 </Link>
@@ -39,7 +38,6 @@ const Nav = ({disable}) => {
                         height="40"
                         alt="MyTEAPony Logo"
                         loading="lazy"
-                        style={{marginTop: "-1px;"}}
                         />
                     </a>
                     </li>
