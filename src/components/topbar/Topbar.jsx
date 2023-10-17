@@ -5,10 +5,7 @@ const Topbar = () => {
   return (
     <Box display="flex" justifyContent="space-between" p={1} sx={{borderBottom: '4px solid #F0F3FB'}}>
       {/* Separador*/}
-      <Box
-        display="flex"
-        borderRadius="3px"
-      >
+      <Box>
       </Box>
 
       {/* Menu */}
