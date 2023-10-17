@@ -18,6 +18,48 @@ const Carta = [
     name: 'Roman',
     lastName: 'Chavez',
     image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
+  },
+  {
+    karnet: 2,
+    name: 'Roman',
+    lastName: 'Chavez',
+    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
+  },
+  {
+    karnet: 2,
+    name: 'Roman',
+    lastName: 'Chavez',
+    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
+  },
+  {
+    karnet: 2,
+    name: 'Roman',
+    lastName: 'Chavez',
+    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
+  },
+  {
+    karnet: 2,
+    name: 'Roman',
+    lastName: 'Chavez',
+    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
+  },
+  {
+    karnet: 2,
+    name: 'Roman',
+    lastName: 'Chavez',
+    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
+  },
+  {
+    karnet: 2,
+    name: 'Roman',
+    lastName: 'Chavez',
+    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
+  },
+  {
+    karnet: 2,
+    name: 'Roman',
+    lastName: 'Chavez',
+    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
   }
 ]
 
@@ -30,15 +72,17 @@ function index() {
         <img src="images/Plus.png" className='imagenañadir' height="20" alt="MyTEAPony Logo" loading="lazy"/>
       </button>
       
-      <ul class="cards">
-        {Carta.map(({karnet, name, image}) => (
-          <Cartas 
-          key={karnet} 
-          karnet={karnet} 
-          name={name} 
-          image={image} />
-        ))}
-        </ul>
+      <ul>
+        <div className="cards">
+          {Carta.map(({karnet, name, image}) => (
+            <Cartas 
+            key={karnet} 
+            karnet={karnet} 
+            name={name} 
+            image={image} />
+          ))}
+        </div>
+      </ul>
     </div>
   )
 }

@@ -86,4 +86,10 @@ nav .menu span {
     nav ul li a {
         margin: 0.2rem 0.5rem;
     }
-} */
+}  */
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 4px solid #F0F3FB;
+}
