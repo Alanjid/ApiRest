@@ -8,14 +8,16 @@ body,
     height: 100%;
     width: 100%;
     font-family: 'Source Sans 3', sans-serif;
+    background-color: #f4f6f9;;
 }
 .app{
     display: flex;
     position: relative;
+    
 }
 
 ::-webkit-scrollbar{
-    width: 10px;
+    width: 6px;
 }
 
 /* Track */

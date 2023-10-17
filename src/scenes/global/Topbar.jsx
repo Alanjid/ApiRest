@@ -8,6 +8,8 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom"
+
 
 
 const Topbar = () => {
@@ -16,19 +18,15 @@ const Topbar = () => {
     const colorMode = useContext(ColorModeContext);
   
     return (
-      <Box display="flex" justifyContent="space-between" p={2}>
-        {/* SEARCH BAR */}
-        <Box
-          display="flex"
-          backgroundColor={colors.primary[400]}
-          borderRadius="3px"
-        >
-          <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
-          <IconButton type="button" sx={{ p: 1 }}>
-            <SearchIcon />
-          </IconButton>
+      <Box display="flex" justifyContent="space-between" p={2} sx={{/* backgroundColor: colors.primary[400] */}}>
+        <Box display='flex' columnGap='10px'>
+        
+        <Link to={'/'}>
+          <h3>Pacientes</h3>
+        </Link>
+        <h3>Actividades</h3>
         </Box>
-        <h1>Hola mundo</h1>
+        
         {/* ICONS */}
         <Box display="flex">
           <IconButton onClick={colorMode.toggleColorMode}>
@@ -38,12 +36,12 @@ const Topbar = () => {
               <LightModeOutlinedIcon />
             )}
           </IconButton>
-          <IconButton>
+{/*           <IconButton>
             <NotificationsOutlinedIcon />
           </IconButton>
           <IconButton>
             <SettingsOutlinedIcon />
-          </IconButton>
+          </IconButton> */}
           <IconButton>
             <PersonOutlinedIcon />
           </IconButton>

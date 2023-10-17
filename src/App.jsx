@@ -21,8 +21,7 @@ import Login from "./login";
 import Index from "./index";
 import Registro from "./registro";
 import Error from "./error";
-
-const router = createBrowserRouter([
+/*  const router = createBrowserRouter([
   {
     path:"/login",
     element: <Login/>,
@@ -37,23 +36,24 @@ const router = createBrowserRouter([
   },{
     path:"*",
     element: <Error/>,
-  }
-])
-
+  },
+]) 
+ */
 function App(){
   const [theme, colorMode] = useMode()
+  const [isSidebar, setIsSidebar] = useState(true);
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div className='App'>
+        <div className='app'>
+        <Sidebar isSidebar={isSidebar}/>
         {/* <RouterProvider router={router}/> */}
           <main className='content'>
-            <Topbar />
+            <Topbar setIsSidebar={setIsSidebar}/>
             <Routes>
-              <Route path='/' element={<Dashboard/>} />
-              <Route path='/login' element={<Login/>} />
-            </Routes>
+              <Route path='/' element={<Dashboard/>} />              
+            </Routes> 
           </main>
         </div>
       </ThemeProvider>
