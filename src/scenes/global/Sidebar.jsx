@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme} from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -13,18 +13,27 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import tea from '../../images/LogoMyTEAPony.png'
 import avatar1 from '../../assets/avatar1.jpg'
 
+const handleSelectedItem = (title, setSelected) =>{
+  setSelected(title)
+  localStorage.setItem('item',title)
+}
+
 const Item = ({ title, to, icon, selected, setSelected }) => {
+  console.log(selected)
+    selected = localStorage.getItem('item')
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     return (
       <MenuItem
         active={selected === title}
+        
         style={{
           color: colors.grey[100],
         }}
-        onClick={() => setSelected(title)}
+        onClick={() => handleSelectedItem(title, setSelected)}
         icon={icon}
       >
+        {console.log(selected === title)}
         <Typography>{title}</Typography>
         <Link to={to} />
       </MenuItem>
@@ -35,8 +44,24 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dahsboard");
+  const [isCollapsed, setIsCollapsed] = useState(localStorage.getItem("sidebar_collapsed") === "true");
+  const [selected, setSelected] = useState("");
+  console.log(typeof isCollapsed)
+  const location = useLocation()
+  console.log('location', location)
+
+
+
+  useEffect(() => {
+    const collapsedValue = localStorage.getItem("sidebar_collapsed");
+    setIsCollapsed(collapsedValue === "true");
+  }, [])
+
+  function handleSetIsCollapsed(value) {
+    setIsCollapsed(value);
+    localStorage.setItem("sidebar_collapsed", value ? "true" : "false");
+  }
+
   return (
     <Box
       sx={{
@@ -62,7 +87,7 @@ const Sidebar = () => {
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={() => handleSetIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
@@ -83,7 +108,7 @@ const Sidebar = () => {
                 <Box width='100%' justifyContent='start' alignItems='center' display='flex'>
                   <img style={{width:100}} src={tea} alt="" />
                 </Box>
-                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
+                <IconButton onClick={() => handleSetIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
                 </IconButton>
               </Box>
@@ -120,7 +145,7 @@ const Sidebar = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Observaciones"
-              to="/"
+              to="/prueba"
               icon={<EditNoteOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -135,14 +160,14 @@ const Sidebar = () => {
             </Typography> */}
             <Item
               title="Actividades"
-              to="/team"
+              to="/dashboard"
               icon={<FormatListBulletedOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Tareas en casa"
-              to="/contacts"
+              to="/observaciones"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -179,7 +204,7 @@ const Sidebar = () => {
             </Typography> */}
             <Item
               title="Avances"
-              to="/bar"
+              to="/prueba3"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

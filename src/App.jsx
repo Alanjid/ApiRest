@@ -14,51 +14,61 @@ import { ColorModeContext, useMode } from './theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { Routes } from 'react-router-dom';
 import Topbar from './scenes/global/Topbar'
-import Dashboard from './scenes/dashboard'
 import Sidebar from './scenes/global/Sidebar'
+import Dashboard from './scenes/dashboard'
+import Observaciones from './scenes/observaciones'
 
 import Login from "./login";
 import Index from "./index";
 import Registro from "./registro";
 import Error from "./error";
-/*  const router = createBrowserRouter([
+ const router = createBrowserRouter([
   {
-    path:"/login",
-    element: <Login/>,
+    path:"/dashboard",
+    element: <Dashboard/>,
   },
   {
     path:"/",
-    element: <Index/>,
+    element: <Login/>,
   },
   {
     path:"/registrate",
     element: <Registro/>,
   },{
+    path:"/prueba",
+    element: <Observaciones/>,
+  },
+  {
     path:"*",
     element: <Error/>,
   },
 ]) 
- */
+
 function App(){
-  const [theme, colorMode] = useMode()
-  const [isSidebar, setIsSidebar] = useState(true);
-  return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className='app'>
-        <Sidebar isSidebar={isSidebar}/>
-        {/* <RouterProvider router={router}/> */}
-          <main className='content'>
+  return(
+  // const [theme, colorMode] = useMode()
+  // const [isSidebar, setIsSidebar] = useState(true);
+  // return (
+  //   <ColorModeContext.Provider value={colorMode}>
+  //     <ThemeProvider theme={theme}>
+  //       <CssBaseline />
+  //       <div className='app'>
+  //       <Sidebar isSidebar={isSidebar}/>
+  //       {/* <RouterProvider router={router}/> */}
+  //         <main className='content'>
           
-            <Topbar setIsSidebar={setIsSidebar}/>
-            <Routes>
-              <Route path='/' element={<Dashboard/>} />              
-            </Routes> 
-          </main>
-        </div>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+  //           <Topbar setIsSidebar={setIsSidebar}/>
+  //           <Routes>
+  //             <Route path='/' element={<Dashboard/>} />              
+  //           </Routes> 
+  //         </main>
+  //       </div>
+  //     </ThemeProvider>
+  //   </ColorModeContext.Provider>
+  // )
+    <>
+      <RouterProvider router={router} />  
+    </>
   )
 }
 
