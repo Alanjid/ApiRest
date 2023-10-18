@@ -22,6 +22,9 @@ import Login from "./login";
 import Index from "./index";
 import Registro from "./registro";
 import Error from "./error";
+import Actividades from './scenes/actividades';
+import Avances from './scenes/avances';
+import Tareas from './scenes/tareas';
  const router = createBrowserRouter([
   {
     path:"/dashboard",
@@ -34,9 +37,22 @@ import Error from "./error";
   {
     path:"/registrate",
     element: <Registro/>,
-  },{
-    path:"/prueba",
+  },
+  {
+    path:"/observaciones",
     element: <Observaciones/>,
+  },
+  {
+    path:"/actividades",
+    element: <Actividades/>,
+  },
+  {
+    path:"/avances",
+    element: <Avances/>,
+  },
+  {
+    path:"/tareas",
+    element: <Tareas/>,
   },
   {
     path:"*",

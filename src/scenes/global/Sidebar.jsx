@@ -145,7 +145,7 @@ const Sidebar = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Observaciones"
-              to="/prueba"
+              to="/observaciones"
               icon={<EditNoteOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -160,14 +160,14 @@ const Sidebar = () => {
             </Typography> */}
             <Item
               title="Actividades"
-              to="/dashboard"
+              to="/actividades"
               icon={<FormatListBulletedOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Tareas en casa"
-              to="/observaciones"
+              to="/tareas"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -204,7 +204,7 @@ const Sidebar = () => {
             </Typography> */}
             <Item
               title="Avances"
-              to="/prueba3"
+              to="/avances"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
