@@ -6,10 +6,8 @@ import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
+import TocOutlinedIcon from '@mui/icons-material/TocOutlined';
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import tea from '../../images/LogoMyTEAPony.png'
@@ -123,7 +121,7 @@ const Sidebar = () => {
             <Item
               title="Observaciones"
               to="/"
-              icon={<HomeOutlinedIcon />}
+              icon={<EditNoteOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -138,14 +136,14 @@ const Sidebar = () => {
             <Item
               title="Actividades"
               to="/team"
-              icon={<PeopleOutlinedIcon />}
+              icon={<TocOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Tareas en casa"
               to="/contacts"
-              icon={<ContactsOutlinedIcon />}
+              icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />          
