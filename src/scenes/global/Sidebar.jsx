@@ -7,7 +7,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
-import TocOutlinedIcon from '@mui/icons-material/TocOutlined';
+import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import tea from '../../images/LogoMyTEAPony.png'
@@ -136,7 +136,7 @@ const Sidebar = () => {
             <Item
               title="Actividades"
               to="/team"
-              icon={<TocOutlinedIcon />}
+              icon={<FormatListBulletedOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
