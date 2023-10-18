@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from './components/navbar/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import LeftVar from './components/leftvar/leftvar'
 import Cartas from './components/cartas/cartas'
 import './styles.css'
 import { useState } from 'react'
