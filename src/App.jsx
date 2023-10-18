@@ -50,6 +50,7 @@ function App(){
         <Sidebar isSidebar={isSidebar}/>
         {/* <RouterProvider router={router}/> */}
           <main className='content'>
+          
             <Topbar setIsSidebar={setIsSidebar}/>
             <Routes>
               <Route path='/' element={<Dashboard/>} />              

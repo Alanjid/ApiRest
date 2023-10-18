@@ -18,7 +18,7 @@ const Topbar = () => {
     const colorMode = useContext(ColorModeContext);
   
     return (
-      <Box display="flex" justifyContent="space-between" p={2} sx={{/* backgroundColor: colors.primary[400] */}}>
+      <Box display="flex" justifyContent="space-between" p={2} sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>
         <Box display='flex' columnGap='10px'>
         
         <Link to={'/'}>

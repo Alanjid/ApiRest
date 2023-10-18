@@ -13,6 +13,7 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import tea from '../../images/LogoMyTEAPony.png'
+import avatar1 from '../../assets/avatar1.jpg'
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -43,6 +44,7 @@ const Sidebar = () => {
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
+          boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.045)'
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -69,6 +71,7 @@ const Sidebar = () => {
               color: colors.grey[100],
             }}
           >
+        
             {!isCollapsed && (
               <Box
                 display="flex"
@@ -88,6 +91,7 @@ const Sidebar = () => {
               </Box>
             )}
           </MenuItem>
+          {/* User */}
           {!isCollapsed && (
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
@@ -95,8 +99,9 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={''}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
+                  src={avatar1}
+
+                  style={{ cursor: "pointer", borderRadius: "50%", objectFit:'cover' }}
                 />
               </Box>
               <Box textAlign="center">
@@ -106,17 +111,17 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ed Roh
+                  Lizeth
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  VP Fancy Admin
+                  Paciente
                 </Typography>
               </Box>
             </Box>
           )}    
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
-              title="Dashboard"
+              title="Observaciones"
               to="/"
               icon={<HomeOutlinedIcon />}
               selected={selected}
@@ -131,14 +136,14 @@ const Sidebar = () => {
               Data
             </Typography> */}
             <Item
-              title="Manage Team"
+              title="Actividades"
               to="/team"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Contacts Information"
+              title="Tareas en casa"
               to="/contacts"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
@@ -152,8 +157,8 @@ const Sidebar = () => {
             >
               Pages
             </Typography> */}
-            <Item
-              title="Profile Form"
+   {/*          <Item
+              title="Avances"
               to="/form"
               icon={<PersonOutlinedIcon />}
               selected={selected}
@@ -165,7 +170,7 @@ const Sidebar = () => {
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
 
             {/* <Typography
               variant="h6"
@@ -175,7 +180,7 @@ const Sidebar = () => {
               Charts
             </Typography> */}
             <Item
-              title="Bar Chart"
+              title="Avances"
               to="/bar"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
