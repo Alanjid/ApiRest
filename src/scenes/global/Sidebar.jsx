@@ -144,6 +144,13 @@ const Sidebar = () => {
           )}    
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
+              title="Datos de paciente"
+              to="/paciente"
+              icon={<EditNoteOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
               title="Observaciones"
               to="/observaciones"
               icon={<EditNoteOutlinedIcon />}

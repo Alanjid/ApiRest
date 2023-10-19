@@ -26,6 +26,7 @@ import Error from "./error";
 import Actividades from './scenes/actividades';
 import Avances from './scenes/avances';
 import Tareas from './scenes/tareas';
+import Paciente from './scenes/paciente';
 
  const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ import Tareas from './scenes/tareas';
   {
     path:"/terapeutas",
     element: <Terapeutas/>,
+  },
+  {
+    path:"/paciente",
+    element: <Paciente/>,
   },
   {
     path:"/registrate",
