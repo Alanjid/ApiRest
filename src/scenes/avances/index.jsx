@@ -7,7 +7,7 @@ const Avances = () => {
         <Base>
             <Box m='20px'>
                 <Box display='flex' justifyContent='space-between' alignItems='center'>
-                    <Header title="Avances" subtitle="Welcome to your dashboard" />               
+                    <Header title="Avances" subtitle="" />               
                 </Box>
             </Box>
         </Base>
