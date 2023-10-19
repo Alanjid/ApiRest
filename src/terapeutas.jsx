@@ -5,7 +5,7 @@ import Header from './components/header/Header'
 function terapeutas() {
   return (
     <div>
-        <Header title="Información personal" subtitle="Create a New User Profile" />
+        <Header title="Información personal" subtitle="Edita tus datos" />
         <Formulario/>
     </div>
   )

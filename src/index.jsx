@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './components/navbar/Nav'
+import Navbar from './scenes/global/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Cartas from './components/cartas/cartas'
 import './styles.css'

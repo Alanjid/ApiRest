@@ -11,7 +11,7 @@ const Todo = ( {karnet, name, image}) => {
             </div>
             <div className="card_content"><img src={image} className="card_image"/></div>
             <div>
-            <a href="/informacion" className="btn card_btn btn1">Ver Más</a>
+            <a href="/paciente" className="btn card_btn btn1">Ver Más</a>
             </div>
         </div>
     </li>
