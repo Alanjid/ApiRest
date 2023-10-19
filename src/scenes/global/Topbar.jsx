@@ -20,31 +20,20 @@ const Topbar = () => {
     return (
       <Box display="flex" justifyContent="space-between" p={2} sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>
         <Box display='flex' columnGap='10px'>
-        
-        <Link to={'/'}>
-          <h3>Pacientes</h3>
-        </Link>
-        <h3>Actividades</h3>
         </Box>
         
         {/* ICONS */}
         <Box display="flex">
-          <IconButton onClick={colorMode.toggleColorMode}>
-            {theme.palette.mode === "dark" ? (
-              <DarkModeOutlinedIcon />
-            ) : (
-              <LightModeOutlinedIcon />
-            )}
-          </IconButton>
-{/*           <IconButton>
-            <NotificationsOutlinedIcon />
-          </IconButton>
-          <IconButton>
-            <SettingsOutlinedIcon />
-          </IconButton> */}
-          <IconButton>
-            <PersonOutlinedIcon />
-          </IconButton>
+          <a href='./' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
+          <a href='' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
+          <a className="navbar-brand me-2" href="#" style={{paddingBottom: "1rem"}}>
+              <img
+              src="images/icon.png"
+              height="40"
+              alt=""
+              loading="lazy"
+              />
+          </a>
         </Box>
       </Box>
     );

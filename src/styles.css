@@ -43,3 +43,24 @@
     object-fit: cover; 
     object-position: left;
 }*/
+
+.botonañadir{
+    margin-top: 1rem;
+    margin-left: 3rem;
+    background-color: #4495E5;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+    .botonañadir{
+        margin-top: 1rem;
+        margin-left: 1rem;
+        background-color: #4495E5;
+        border-radius: 20px;
+    }
+}
+
+.imagenañadir{
+    padding-left: 50px;
+}

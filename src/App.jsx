@@ -21,10 +21,12 @@ import Observaciones from './scenes/observaciones'
 import Login from "./login";
 import Index from "./index";
 import Registro from "./registro";
+import Terapeutas from "./terapeutas";
 import Error from "./error";
 import Actividades from './scenes/actividades';
 import Avances from './scenes/avances';
 import Tareas from './scenes/tareas';
+
  const router = createBrowserRouter([
   {
     path:"/dashboard",
@@ -32,7 +34,15 @@ import Tareas from './scenes/tareas';
   },
   {
     path:"/",
+    element: <Index/>,
+  },
+  {
+    path:"/login",
     element: <Login/>,
+  },
+  {
+    path:"/terapeutas",
+    element: <Terapeutas/>,
   },
   {
     path:"/registrate",

@@ -1,53 +1,37 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState } from "react";
-import "./Nav.css";
-import { Link, NavLink } from "react-router-dom";
-import { FaUserCircle } from "react-icons/Fa";
+import { Box, IconButton } from "@mui/material";
+import './Nav.css'
 
-const Nav = ({disable}) => {
-    const [menuOpen, setMenuOpen] = useState(false);
-    return (
-        <div>
-            <nav>
-                <Link to="/" className="title">
-                    <div class="container">
-                        <img
-                        src="images/LogoMyTEAPony.png"
-                        height="40"
-                        alt="MyTEAPony Logo"
-                        loading="lazy"
-                        style={{marginTop: "-1px;"}}
-                        />
-                    </div>
-                </Link>
-                <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <ul className={menuOpen ? "open" : ""}>
-                    <li>
-                    <a href='./'><button type="button" class="btn btn-outline-primary me-3">PACIENTES</button></a>
-                    </li>
-                    <li>
-                    <a href=''><button type="button" class="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
-                    </li>
-                    <li>
-                    <a class="navbar-brand me-2" href="#" style={{paddingTop: "0.5rem"}}>
-                        <img
-                        src="images/icon.png"
-                        height="40"
-                        alt="MyTEAPony Logo"
-                        loading="lazy"
-                        style={{marginTop: "-1px;"}}
-                        />
-                    </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    )
-}
+const Nav = () => {
 
+  return (
+    <Box className="navbar" p={1} sx={{borderBottom: '4px solid #F0F3FB'}}>
+      {/* Separador*/}
+      <Box>
+      <a className="navbar-brand me-2" href="#" style={{paddingTop: "0.5rem"}}>
+        <img
+        src="images/LogoMyTEAPony.png"
+        height="40"
+        alt="MyTEAPony Logo"
+        loading="lazy"
+        />
+      </a>
+      </Box>
 
-export default Nav
+      {/* Menu */}
+      <Box display="flex">
+        <a href='./' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
+        <a href='' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
+        <a className="navbar-brand me-2" href="/terapeutas" style={{paddingBottom: "1rem"}}>
+            <img
+            src="images/icon.png"
+            height="40"
+            alt=""
+            loading="lazy"
+            />
+        </a>
+      </Box>
+    </Box>
+  );
+};
+
+export default Nav;
