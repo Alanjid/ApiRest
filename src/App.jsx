@@ -14,6 +14,7 @@ import Index from "./index";
 import Registro from "./registro";
 import Error from "./error";
 import Pacientes from "./pacientes"
+import Terapeutas from "./terapeutas"
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,9 @@ const router = createBrowserRouter([
   },{
     path:"/informacion",
     element: <Pacientes/>,
+  },{
+    path:"/terapeutas",
+    element: <Terapeutas/>,
   },{
     path:"*",
     element: <Error/>,

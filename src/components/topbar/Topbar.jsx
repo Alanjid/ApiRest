@@ -1,14 +1,12 @@
 import { Box, IconButton } from "@mui/material";
+import './Nav.css'
 
 const Topbar = () => {
 
   return (
-    <Box display="flex" justifyContent="space-between" p={1} sx={{borderBottom: '4px solid #F0F3FB'}}>
+    <Box className="navbar" p={1}>
       {/* Separador*/}
-      <Box
-        display="flex"
-        borderRadius="3px"
-      >
+      <Box>
       </Box>
 
       {/* Menu */}
