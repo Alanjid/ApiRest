@@ -52,7 +52,7 @@ export const tokens = (mode) => ({
         blueAccent: {
           100: "#e1e2fe",
           200: "#c3c6fd",
-          300: "#a4a9fc",
+          300: "#1976d2", /* modificado  a4a9fc */
           400: "#868dfb",
           500: "#6870fa",
           600: "#535ac8",
@@ -110,7 +110,7 @@ export const tokens = (mode) => ({
         blueAccent: {
           100: "#151632",
           200: "#2a2d64",
-          300: "#3e4396",
+          300: "#1976d2", /* #3e4396 */
           400: "#535ac8",
           500: "#6870fa",
           600: "#868dfb",
@@ -143,7 +143,7 @@ export const themeSettings = (mode) => {
             },
             background: {
               default: colors.primary[500],
-            },
+            },           
           }
         : {
             // palette values for light mode
@@ -161,6 +161,9 @@ export const themeSettings = (mode) => {
             background: {
               default: "#fcfcfc",
             },
+            blue:{
+              main: colors.blueAccent[300]
+            }
           }),
     },
     typography: {

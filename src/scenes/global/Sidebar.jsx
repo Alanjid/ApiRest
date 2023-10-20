@@ -10,8 +10,10 @@ import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import tea from '../../images/LogoMyTEAPony.png'
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import tea from '../../images/logo 1.png'
 import avatar1 from '../../assets/avatar1.jpg'
+
 
 const handleSelectedItem = (title, setSelected) =>{
   setSelected(title)
@@ -46,11 +48,9 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(localStorage.getItem("sidebar_collapsed") === "true");
   const [selected, setSelected] = useState("");
-  console.log(typeof isCollapsed)
-  const location = useLocation()
-  console.log('location', location)
-
-
+  //console.log(typeof isCollapsed)
+  //const location = useLocation()
+  //console.log('location', location)
 
   useEffect(() => {
     const collapsedValue = localStorage.getItem("sidebar_collapsed");
@@ -146,7 +146,7 @@ const Sidebar = () => {
             <Item
               title="Datos de paciente"
               to="/paciente"
-              icon={<EditNoteOutlinedIcon />}
+              icon={<PersonOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
