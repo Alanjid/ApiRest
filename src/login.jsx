@@ -44,7 +44,7 @@ function login() {
             <div className="col-sm-6 text-black">        
                 <main className="form-signin text-center p-3 mb-5">
 
-                    <img className="mb-4" src="images/LogoMyTEAPony.png" alt="" width="150" height="100"/>
+                    <img className="mb-4" src="images/logo 1.png" alt="" width="150" height="100"/>
                     <h4 className="salto letra">INICIO DE SESIÓN</h4>
                     <div className="form-floating salto">
                       <input type="text" onChange={(event)=>{
