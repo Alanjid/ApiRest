@@ -5,17 +5,13 @@ import { ColorModeContext,tokens } from "../../theme"
 import { Link } from "react-router-dom"
 
 import Avatar from '@mui/material/Avatar';
-import User_image from '../../assets/avatar2.jpg'
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Logout from '@mui/icons-material/Logout';
 
 function AccountMenu() {
@@ -78,11 +74,11 @@ function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >              
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleClose} component={Link} to="/cuenta">
           <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Mi cuenta
+            <AccountCircleIcon />
+          </ListItemIcon>          
+            Mi cuenta         
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>

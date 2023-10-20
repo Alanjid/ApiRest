@@ -37,7 +37,7 @@ const formulario = () => {
             >
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="Correo electronico"
                 onBlur={handleBlur}
@@ -50,7 +50,7 @@ const formulario = () => {
               />
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="Nombre"
                 onBlur={handleBlur}
@@ -63,7 +63,7 @@ const formulario = () => {
               />
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="password"
                 label="Contraseña"
                 onBlur={handleBlur}
@@ -77,7 +77,7 @@ const formulario = () => {
               
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="Localidad"
                 onBlur={handleBlur}
