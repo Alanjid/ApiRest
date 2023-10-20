@@ -10,7 +10,8 @@ import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import tea from '../../images/LogoMyTEAPony.png'
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import tea from '../../images/logo 1.png'
 import avatar1 from '../../assets/avatar1.jpg'
 
 const handleSelectedItem = (title, setSelected) =>{
@@ -146,7 +147,7 @@ const Sidebar = () => {
             <Item
               title="Datos de paciente"
               to="/paciente"
-              icon={<EditNoteOutlinedIcon />}
+              icon={<PersonOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
