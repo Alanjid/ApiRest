@@ -28,6 +28,7 @@ import Avances from './scenes/avances';
 import Tareas from './scenes/tareas';
 import Paciente from './scenes/paciente';
 import Cuenta from './scenes/cuenta';
+import ActividadesRealizadas from './scenes/actividades_realizadas';
 
 
  const router = createBrowserRouter([
@@ -74,6 +75,10 @@ import Cuenta from './scenes/cuenta';
   {
     path:"/paciente/tareas",
     element: <Tareas/>,
+  }, 
+  {
+    path:"/paciente/actividades-realizadas",
+    element: <ActividadesRealizadas/>,
   },
   {
     path:"/cuenta",

@@ -6,9 +6,9 @@ import Form from '../../components/formulario1/formulario'
 const Cuenta = () => {
     return (
         <Base>
-            <Box m='20px'>
+            <Box m='20px' padding='20px'  sx={{background:'#fcfcfc'}}>
                 <Box display='flex' justifyContent='space-between' alignItems='center'>
-                    <Header title="Cuenta" subtitle="Welcome to your dashboard" />               
+                    <Header title="Cuenta"/>               
                 </Box>
                 <Form />
             </Box>
