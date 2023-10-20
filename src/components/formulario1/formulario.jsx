@@ -91,7 +91,7 @@ const formulario = () => {
               />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
-              <Button type="submit" variant="contained">
+              <Button type="submit" variant="contained" sx={{backgroundColor: '#4494E5'}}>
                 Guardar
               </Button>
             </Box>

@@ -21,12 +21,14 @@ import Login from "./login";
 import Index from "./index";
 import Registro from "./registro";
 import Terapeutas from "./terapeutas";
+import Actividades from "./actividades";
 import Error from "./error";
-import Actividades from './scenes/actividades';
+import PActividades from './scenes/actividades';
 import Avances from './scenes/avances';
 import Tareas from './scenes/tareas';
 import Paciente from './scenes/paciente';
 import Cuenta from './scenes/cuenta';
+
 
  const router = createBrowserRouter([
   {
@@ -42,6 +44,10 @@ import Cuenta from './scenes/cuenta';
     element: <Login/>,
   },
   {
+    path:"/actividades",
+    element: <Actividades/>,
+  },
+  {
     path:"/terapeutas",
     element: <Terapeutas/>,
   },
@@ -54,19 +60,19 @@ import Cuenta from './scenes/cuenta';
     element: <Registro/>,
   },
   {
-    path:"/observaciones",
+    path:"/paciente/observaciones",
     element: <Observaciones/>,
   },
   {
-    path:"/actividades",
-    element: <Actividades/>,
+    path:"/paciente/actividades",
+    element: <PActividades/>,
   },
   {
-    path:"/avances",
+    path:"/paciente/avances",
     element: <Avances/>,
   },
   {
-    path:"/tareas",
+    path:"/paciente/tareas",
     element: <Tareas/>,
   },
   {

@@ -152,7 +152,7 @@ const Sidebar = () => {
             />
             <Item
               title="Observaciones"
-              to="/observaciones"
+              to="/paciente/observaciones"
               icon={<EditNoteOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -167,14 +167,14 @@ const Sidebar = () => {
             </Typography> */}
             <Item
               title="Actividades"
-              to="/actividades"
+              to="/paciente/actividades"
               icon={<FormatListBulletedOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Tareas en casa"
-              to="/tareas"
+              to="/paciente/tareas"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -211,7 +211,7 @@ const Sidebar = () => {
             </Typography> */}
             <Item
               title="Avances"
-              to="/avances"
+              to="/paciente/avances"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
