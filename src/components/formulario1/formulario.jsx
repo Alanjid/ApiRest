@@ -12,7 +12,7 @@ const formulario = () => {
 
     };
   return (
-    <Box m="20px">
+    <Box>
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}

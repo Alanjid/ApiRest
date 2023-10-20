@@ -97,7 +97,7 @@ const Topbar = () => {
     const colorMode = useContext(ColorModeContext);
   
     return (
-      <Box display="flex" justifyContent="end" p={2} sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>        
+      <Box display="flex" justifyContent="end" p='10px' sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>        
         
         {/* ICONS */}
         <Box display="flex" alignItems='center'>
