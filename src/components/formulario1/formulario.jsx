@@ -37,7 +37,7 @@ const formulario = () => {
             >
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="Correo electronico"
                 onBlur={handleBlur}
@@ -50,7 +50,7 @@ const formulario = () => {
               />
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="Nombre"
                 onBlur={handleBlur}
@@ -63,7 +63,7 @@ const formulario = () => {
               />
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="password"
                 label="Contraseña"
                 onBlur={handleBlur}
@@ -77,7 +77,7 @@ const formulario = () => {
               
               <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 type="text"
                 label="Localidad"
                 onBlur={handleBlur}
@@ -91,7 +91,7 @@ const formulario = () => {
               />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
-              <Button type="submit" variant="contained">
+              <Button type="submit" variant="contained" sx={{backgroundColor: '#4494E5'}}>
                 Guardar
               </Button>
             </Box>

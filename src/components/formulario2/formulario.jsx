@@ -133,7 +133,7 @@ const formulario = () => {
                 </DemoContainer>
               </LocalizationProvider>
             </Box>
-            <Box display="flex" justifyContent="end" mt="20px">
+            <Box display="flex" justifyContent="start" mt="20px">
               <Button type="submit" variant="contained" sx={{backgroundColor: '#4494E5'}}>
                 Guardar
               </Button>

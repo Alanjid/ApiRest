@@ -12,7 +12,7 @@ import { Link } from "react-router-dom"
 
 
 
-const Navbar = () => {
+const NavError = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
@@ -20,7 +20,7 @@ const Navbar = () => {
     return (
       <Box display="flex" justifyContent="space-between" p={1} sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>
         <Box display='flex' columnGap='10px'>
-        <a className="navbar-brand me-2" href="#">
+        <a className="navbar-brand me-2" href="/">
         <img
         src="images/LogoMyTEAPony.png"
         height="50"
@@ -32,19 +32,9 @@ const Navbar = () => {
         
         {/* ICONS */}
         <Box display="flex">
-          <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
-          <a href='/actividades' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
-          <a className="navbar-brand me-2" href="#">
-              <img
-              src="images/icon.png"
-              height="40"
-              alt=""
-              loading="lazy"
-              />
-          </a>
         </Box>
       </Box>
     );
   };
   
-  export default Navbar;
+  export default NavError;

@@ -17,48 +17,6 @@ const Carta = [
     name: 'Roman',
     lastName: 'Chavez',
     image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
-  },
-  {
-    karnet: 2,
-    name: 'Roman',
-    lastName: 'Chavez',
-    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
-  },
-  {
-    karnet: 2,
-    name: 'Roman',
-    lastName: 'Chavez',
-    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
-  },
-  {
-    karnet: 2,
-    name: 'Roman',
-    lastName: 'Chavez',
-    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
-  },
-  {
-    karnet: 2,
-    name: 'Roman',
-    lastName: 'Chavez',
-    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
-  },
-  {
-    karnet: 2,
-    name: 'Roman',
-    lastName: 'Chavez',
-    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
-  },
-  {
-    karnet: 2,
-    name: 'Roman',
-    lastName: 'Chavez',
-    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
-  },
-  {
-    karnet: 2,
-    name: 'Roman',
-    lastName: 'Chavez',
-    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
   }
 ]
 

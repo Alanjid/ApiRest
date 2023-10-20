@@ -1,7 +1,7 @@
-
 import { Box } from "@mui/material"
 import Base from '../../components/base/Base'
 import Header from "../../components/header/Header"
+
 const Actividades = () => {
     return (
         <Base>
