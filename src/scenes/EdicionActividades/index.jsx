@@ -18,6 +18,10 @@ function index() {
                 <Header title="" subtitle="Objetivo de la actividad 1" />
             </Box>
             <Textarea/>
+            <Box display='flex' justifyContent='center' alignItems='center'>
+                <Header title="" subtitle="Materiales de la actividad 1" />
+            </Box>
+            <Textarea/>
             <Box display="flex" justifyContent="start" mt="20px" ml='10px'>
                 <Button type="submit" variant="contained" sx={{backgroundColor: '#4494E5'}}>
                     Guardar
