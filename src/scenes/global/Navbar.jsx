@@ -22,7 +22,7 @@ const Navbar = () => {
         <Box display='flex' columnGap='10px'>
         <a className="navbar-brand me-2" href="#">
         <img
-        src="images/LogoMyTEAPony.png"
+        src="images/logo 1.png"
         height="50"
         alt="MyTEAPony Logo"
         loading="lazy"
