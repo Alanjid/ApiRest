@@ -14,6 +14,7 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import tea from '../../images/logo 1.png'
 import avatar1 from '../../assets/avatar1.jpg'
 
+
 const handleSelectedItem = (title, setSelected) =>{
   setSelected(title)
   localStorage.setItem('item',title)
@@ -47,11 +48,9 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(localStorage.getItem("sidebar_collapsed") === "true");
   const [selected, setSelected] = useState("");
-  console.log(typeof isCollapsed)
-  const location = useLocation()
-  console.log('location', location)
-
-
+  //console.log(typeof isCollapsed)
+  //const location = useLocation()
+  //console.log('location', location)
 
   useEffect(() => {
     const collapsedValue = localStorage.getItem("sidebar_collapsed");
