@@ -126,6 +126,7 @@ const formulario = () => {
                     format='DD-MM-YYYY'
                     label="Fecha De Inicio"
                     value={value}
+                    readOnly='true'
                     onChange={(newValue) => setValue(newValue)}
                     sx={{width: '100%'}}
                   />
