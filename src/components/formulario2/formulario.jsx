@@ -106,20 +106,6 @@ const formulario = () => {
                 ))}
               </TextField>
               
-              <TextField
-                fullWidth
-                variant="outlined"
-                type="text"
-                label="Fecha de inicio"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.inicio}
-                name="inicio"
-                InputProps={{
-                  readOnly: false,
-                }}
-                sx={{ gridColumn: "span 4" }}
-              />
                <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={[ 'DatePicker']} sx={{gridColumn: "span 4"}}>
                   <DatePicker
