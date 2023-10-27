@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography, Button } from "@mui/material";
 import Base from "../../components/base/Base";
 import Header from "../../components/header/Header";
 import Chart from "../../components/dataset/chart";
@@ -13,7 +13,7 @@ const Avances = () => {
         </Box>
         <Link to="/paciente/actividades-realizadas" style={{ textDecoration: "none" }}>
           <Card sx={{ ":hover": { cursor: "pointer" }, marginBottom: 0 }}>
-            <CardContent sx={{ paddingBottom: "16px !important" }}>
+            <CardContent sx={{ paddingBottom: "16px !important", backgroundColor: "#4494E5" }}>
               <Typography variant="h4">Actividades Realizadas</Typography>
             </CardContent>
           </Card>
