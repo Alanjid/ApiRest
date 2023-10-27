@@ -107,7 +107,7 @@ const Navbar = () => {
     return (
       <Box display="flex" justifyContent="space-between" p={1} sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>
         <Box display='flex' columnGap='10px'>
-        <a className="navbar-brand me-2" href="#">
+        <a className="navbar-brand me-2" href="/">
         <img
         src="images/logo 1.png"
         height="50"
