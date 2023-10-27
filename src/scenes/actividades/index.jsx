@@ -12,7 +12,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
@@ -31,18 +30,33 @@ const Actividades = () => {
         <Base>
             <Box m='20px'>
                 <Box display='flex' justifyContent='space-between' alignItems='center'>
-                    <Header title="Actividades" subtitle="Welcome to your dashboard" />               
+                    <Header title="Actividades" />               
                 </Box>
                 <Box display='flex' rowGap='1rem' flexDirection='column'>
                     
                     <Card onClick={handleClickOpen} sx={{":hover":{cursor:'pointer'}}}>                        
                         <CardContent>
-                            <Typography variant="h4">Metodo TEACCH</Typography>
+                            <Typography variant="h4">Alimentos</Typography>
                         </CardContent>
                     </Card>
                     <Card onClick={handleClickOpen} sx={{":hover":{cursor:'pointer'}}}>
                         <CardContent>
-                            <Typography variant="h4">Metodo </Typography>
+                            <Typography variant="h4">Bebidas</Typography>
+                        </CardContent>
+                    </Card>
+                    <Card onClick={handleClickOpen} sx={{":hover":{cursor:'pointer'}}}>
+                        <CardContent>
+                            <Typography variant="h4">Acciones</Typography>
+                        </CardContent>
+                    </Card>
+                    <Card onClick={handleClickOpen} sx={{":hover":{cursor:'pointer'}}}>
+                        <CardContent>
+                            <Typography variant="h4">Partes del cuerpo</Typography>
+                        </CardContent>
+                    </Card>
+                    <Card onClick={handleClickOpen} sx={{":hover":{cursor:'pointer'}}}>
+                        <CardContent>
+                            <Typography variant="h4">Prendas de vestir</Typography>
                         </CardContent>
                     </Card>
                 </Box>
@@ -50,23 +64,23 @@ const Actividades = () => {
             {/* Modal */}
             <div>
                 <Dialog open={open} fullWidth maxWidth='sm'>
-                <DialogTitle><Typography variant='h3'>Metodo TEACCH</Typography></DialogTitle>
+                <DialogTitle><Typography variant='h3'>Actividades</Typography></DialogTitle>
                 <DialogContent dividers>
                     <DialogContentText>
                   
                   Seleccione las actividades para el paciente.
                     </DialogContentText>
                     <FormGroup>
-                        <FormControlLabel control={<Checkbox color='blue' defaultChecked />}  label="Alimentos" />
-                        <FormControlLabel control={<Checkbox color='blue' />} label="Bebidas" />
-                        <FormControlLabel control={<Checkbox color='blue' defaultChecked />}  label="Acciones" />
-                        <FormControlLabel control={<Checkbox color='blue' />} label="Partes del cuerpo" />
-                        <FormControlLabel control={<Checkbox color='blue' />} label="Prendas de vestir" />
+                        <FormControlLabel control={<Checkbox color='blue' defaultChecked />}  label="Actividad 1" />
+                        <FormControlLabel control={<Checkbox color='blue' />} label="Actividad 2" />
+                        <FormControlLabel control={<Checkbox color='blue' defaultChecked />}  label="Actividad 3" />
+                        <FormControlLabel control={<Checkbox color='blue' />} label="Actividad 4" />
+                        <FormControlLabel control={<Checkbox color='blue' />} label="Actividad 5" />
                     </FormGroup>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleClose}>Subscribe</Button>
+                <DialogActions sx={{display:'flex',justifyContent:'space-between'}}>
+                    <Button onClick={handleClose} color='blue'>Cancelar</Button>
+                    <Button onClick={handleClose} color='blue'>Agregar</Button>
                 </DialogActions>
                 </Dialog>
             </div>

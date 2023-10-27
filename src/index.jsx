@@ -10,13 +10,13 @@ const Carta = [
     karnet: 1,
     name: 'Alan',
     lastName: 'Jimenez',
-    image: "https://steamuserimages-a.akamaihd.net/ugc/1622974778773506850/4E3829042BFFCFD36B03599134B52F8077E14881/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false"    
+    image: "images/avatar1.jpg"    
   },
   {
     karnet: 2,
     name: 'Roman',
     lastName: 'Chavez',
-    image: "https://cdn.milenio.com/uploads/media/2020/02/25/ayuda-pato-zapatos-ganarse-premio_0_332_958_596.jpg"    
+    image: "images/avatar2.jpg"    
   }
 ]
 

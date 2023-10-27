@@ -6,7 +6,7 @@ import Textarea from "../../components/textarea/textarea"
 const Dashboard = () => {
     return (
         <Base>
-            <Box mt='10px' mr='10px'>
+            <Box m='20px'  padding='20px'  sx={{background:'#fcfcfc'}}>
                 <Box display='flex' justifyContent='center' alignItems='center'>
                     <Header title="Ingresa las observaciones del paciente" subtitle="" />    
                 </Box>
