@@ -76,7 +76,7 @@ function ActividadesRealizadas() {
     </div> */}
 
     <Box display='flex' justifyContent='end' >
-      <FormControl sx={{ width:'20rem' }} >
+  <FormControl sx={{ width:'15rem' }} > 
         <InputLabel id="demo-simple-select-label">Actividades Realizadas</InputLabel>
             <Select
               defaultValue={1}
@@ -92,7 +92,7 @@ function ActividadesRealizadas() {
               <MenuItem value={4}>Partes del cuerpo</MenuItem>
               <MenuItem value={5}>Prendas de vestir</MenuItem>
           </Select>
-        </FormControl>
+        </FormControl> 
         </Box>
         <Box mt='2rem' display='flex' flexDirection='column' gap='1rem'>
           <Card sx={{":hover":{cursor:'pointer'},marginBottom:0}} onClick={handleClickOpen}>
