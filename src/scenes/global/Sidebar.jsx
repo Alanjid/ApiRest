@@ -13,6 +13,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import ImageIcon from '@mui/icons-material/Image';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import tea from '../../images/logo 1.png'
 import avatar1 from '../../assets/avatar1.jpg'
 
@@ -153,7 +154,7 @@ const Sidebar = () => {
           <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
+              sx={{ m: "15px 0 5px 20px" }} 
             >
               Paginas
             </Typography>
@@ -174,7 +175,7 @@ const Sidebar = () => {
             <Item
               title="Imagenes"
               to="/actividades"
-              icon={<ImageIcon />}
+              icon={<ImageOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />

@@ -5,6 +5,7 @@ import Cartas from './components/cartas/cartas'
 import './styles.css'
 import { useState } from 'react'
 
+
 const Carta = [
   {
     karnet: 1,
@@ -22,9 +23,11 @@ const Carta = [
 
 function index() {
   const [cartas, setCartas] = useState([])
+
   return (
     <div>
-      <Navbar/>
+
+ <Navbar/>
       <button type="button" className="btn btn-primary botonañadir">Primary 
         <img src="images/Plus.png" className='imagenañadir' height="20" alt="MyTEAPony Logo" loading="lazy"/>
       </button>
@@ -39,7 +42,8 @@ function index() {
             image={image} />
           ))}
         </div>
-      </ul>
+      </ul> 
+ 
     </div>
   )
 }

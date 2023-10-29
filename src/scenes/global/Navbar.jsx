@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, useTheme } from "@mui/material"
+import { Box, Divider, useMediaQuery, useTheme } from "@mui/material"
 import { useContext } from "react"
 import { ColorModeContext,tokens } from "../../theme"
 import InputBase from "@mui/material/InputBase"
@@ -20,6 +20,18 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Logout from '@mui/icons-material/Logout';
+import { useState } from 'react';
+
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import { Button, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material'
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ImageIcon from '@mui/icons-material/Image';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import LogoutIcon from '@mui/icons-material/Logout';
+import MenuIcon from '@mui/icons-material/Menu';
 
 function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -103,7 +115,8 @@ const Navbar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
-  
+    const [state, setState] = useState(false);
+    const isMobile = useMediaQuery("(max-width:767px)");
     return (
       <Box display="flex" justifyContent="space-between" p={1} sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>
         <Box display='flex' columnGap='10px'>
@@ -119,20 +132,78 @@ const Navbar = () => {
         
         {/* ICONS */}
         <Box display="flex" alignItems='center'>
-          <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
-          <a href='/actividades' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
-          {/* <a className="navbar-brand me-2" href="#">
-              <img
-              src="images/icon.png"
-              height="40"
-              alt=""
-              loading="lazy"
-              />
-          </a> */}
-          <AccountMenu/>
+          {!isMobile && (
+          <>
+            <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
+            <a href='/actividades' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
+            <AccountMenu/>
+            {/* <a className="navbar-brand me-2" href="#">
+                <img
+                src="images/icon.png"
+                height="40"
+                alt=""
+                loading="lazy"
+                />
+            </a> */}
+          </>
+          )}
+          {isMobile && (
+          <>
+            
+          <Button onClick={()=>setState(true)}>
+            <MenuIcon/>
+          </Button>
+          <Drawer
+            anchor={'left'}
+            open={state}
+            onClose={()=>setState(false)}
+          >            
+          <List  component='nav'>
+            {/* Item */}
+            <NavbarItem icon={<PeopleAltIcon />} text='Pacientes' link='/' />
+            {/* END Item */}
+            {/* Item */}
+            <NavbarItem icon={<AssignmentIcon />} text='Actividades' link='/actividades' />
+            {/* END Item */}
+            {/* Item */}
+            <NavbarItem icon={<ImageIcon />} text='Imagenes' link='' />
+            {/* END Item */}                    
+          </List>
+          <Divider sx={{opacity:'unset !important'}}/>                       
+          <List>
+            {/* Item */}
+            <NavbarItem icon={<AccountCircleIcon />} text='Mi Cuenta' link='/cuenta' />
+            {/* END Item */}
+            {/* Item */}
+            <NavbarItem icon={<LogoutIcon />} text='Cerrar Sesión' link='' />
+            {/* END Item */}                    
+          </List>
+          </Drawer>
+          </>
+          )}
+         
+       
         </Box>
       </Box>
     );
   };
   
+  const NavbarItem = ({icon,text,link}) => {
+    return(
+      <>    
+      <ListItem disablePadding >              
+      <ListItemButton component={Link} to={link}>
+        <ListItemIcon sx={{minWidth:'40px'}}>
+          {icon}
+        </ListItemIcon>
+        <ListItemText primary={text} />
+      </ListItemButton>
+    </ListItem>
+    </>
+    
+    )
+  }
+
+
   export default Navbar;
+
