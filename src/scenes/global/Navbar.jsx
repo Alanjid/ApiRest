@@ -1,138 +1,186 @@
 import * as React from 'react';
-import { Box, useTheme } from "@mui/material"
-import { useContext } from "react"
-import { ColorModeContext,tokens } from "../../theme"
-import InputBase from "@mui/material/InputBase"
-import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined"
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined"
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import SearchIcon from "@mui/icons-material/Search";
-import { Link } from "react-router-dom"
-
-import Avatar from '@mui/material/Avatar';
-
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Logout from '@mui/icons-material/Logout';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
+import Link from '@mui/material/Link';
 
-function AccountMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+const settings = ['Perfil', 'Logout'];
+
+function ResponsiveAppBar() {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
   };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
   return (
-    <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Tooltip title="Mi cuenta">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
+    <AppBar position="static" sx={{bgcolor: '#FBFBFB'}}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="primary"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              <MenuItem>
+                <Box><Link underline="none" href="/">Pacientes</Link></Box>
+              </MenuItem>
+              <MenuItem>
+                <Link underline="none" href="/actividades">Actividades</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link underline="none" href="/">Imagenes</Link>
+              </MenuItem>
+            </Menu>
+          </Box>
+          <a className="navbar-brand me-2" href="/">
+            <img
+              src="images/logo 1.png"
+              height="50"
+              alt="MyTEAPony Logo"
+              loading="lazy"
+              style={{xs: 'flex', md: 'none'}}
+              mr= {1}
+            />
+          </a>
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
           >
-            <Avatar src='https://randomuser.me/api/portraits/men/85.jpg' sx={{ width: 42, height: 42 }} />
-          </IconButton>
-        </Tooltip>
-      </Box>
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
-        }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      >              
-        <MenuItem onClick={handleClose} component={Link} to="/cuenta">
-          <ListItemIcon>
-            <AccountCircleIcon />
-          </ListItemIcon>          
-            Mi cuenta         
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Cerrar sesión
-        </MenuItem>
-      </Menu>
-    </React.Fragment>
+          </Typography>
+          <Box sx={{ flexGrow: 1, flexDirection: "row-reverse",display: { xs: 'none', md: 'flex' } }}>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2,
+                    color: '#0D6EFD',
+                    display: 'block',  
+                    mr: '10px',
+                    borderRadius: 0,
+                    borderRight: 1,
+                    borderColor: 'grey.500'}}
+              href='/actividades'
+            >
+              Actividades
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2,
+                    color: '#0D6EFD',
+                    display: 'block',  
+                    mr: '10px',
+                    borderRadius: 0,
+                    borderRight: 1,
+                    borderLeft: 1,
+                    borderColor: 'grey.500'}}
+              href='/actividades'
+            >
+              Pacientes
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2,
+                    color: '#0D6EFD',
+                    display: 'block',  
+                    mr: '10px',
+                    borderRadius: 0,
+                    borderLeft: 1,
+                    borderColor: 'grey.500'}}
+              href='/actividades'
+            >
+              Imagenes
+            </Button>
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="images/icon.png" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
-
-
-const Navbar = () => {
-    const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
-    const colorMode = useContext(ColorModeContext);
-  
-    return (
-      <Box display="flex" justifyContent="space-between" p={1} sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>
-        <Box display='flex' columnGap='10px'>
-        <a className="navbar-brand me-2" href="/">
-        <img
-        src="images/logo 1.png"
-        height="50"
-        alt="MyTEAPony Logo"
-        loading="lazy"
-        />
-      </a>
-        </Box>
-        
-        {/* ICONS */}
-        <Box display="flex" alignItems='center'>
-          <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
-          <a href='/actividades' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
-          {/* <a className="navbar-brand me-2" href="#">
-              <img
-              src="images/icon.png"
-              height="40"
-              alt=""
-              loading="lazy"
-              />
-          </a> */}
-          <AccountMenu/>
-        </Box>
-      </Box>
-    );
-  };
-  
-  export default Navbar;
+export default ResponsiveAppBar;
