@@ -35,7 +35,7 @@ function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar src='https://randomuser.me/api/portraits/men/85.jpg' sx={{ width: 42, height: 42 }} />
+            <Avatar src='images/icon.png' sx={{ width: 42, height: 42 }} />
           </IconButton>
         </Tooltip>
       </Box>
@@ -104,6 +104,7 @@ const Topbar = () => {
         <Box display="flex" alignItems='center'>
           {!isMobile &&(
           <>
+            <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">IMAGENES</button></a>
             <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
             <a href='/actividades' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
           </>

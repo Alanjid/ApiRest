@@ -1,6 +1,6 @@
 import { Box, Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material"
 import Base from '../../components/base/Base'
-import Header from "../../components/header/Header"
+import Header from "../global/Topbar"
 
 import * as React from 'react';
 import Typography from '@mui/material/Typography';

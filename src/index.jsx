@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import {
   GridRowModes,
   DataGrid,
+  GridToolbar,
   GridToolbarContainer,
   GridActionsCellItem,
   GridRowEditStopReasons,
@@ -18,20 +19,22 @@ import { Link } from '@mui/material';
 }; */
 
 const columns = [
-  { field: 'id', headerName: 'Karnet', width: 70 },
-  { field: 'Nombre', headerName: 'Nombre', width: 300 },
-  { field: 'Apellidos', headerName: 'Apellidos', width: 300 },
+  { field: 'id', headerName: 'Karnet', width: 70, align: 'center' },
+  { field: 'Nombre', headerName: 'Nombre', width: 300, align: 'center' },
+  { field: 'Apellidos', headerName: 'Apellidos', width: 300, align: 'center' },
+  { field: 'nacimiento', headerName: 'Fecha De Nacimiento', width: 300, align: 'center' },
   {
     field: 'Diagnostico',
     headerName: 'Diagnostico',
-    type: 'number',
     width: 90,
+    align: 'center',
   },
   {
     field: 'Accion',
     headerName: 'Accion',
-    width: 160,
+    width: 300,
     cellClassName: 'actions',
+    align: 'right',
     renderCell: (cellValues) => {
       return (
         <Button
@@ -41,6 +44,7 @@ const columns = [
             handleClick(event, cellValues);
           }} */
           href='/paciente'
+          style={{width: '100%', height: '70%'}}
         >
           Ver más
         </Button>
@@ -50,15 +54,15 @@ const columns = [
 ];
 
 const Carta = [
-  { id: 1, Apellidos: 'Snow', Nombre: 'Jon', Diagnostico: 3 , Activo: 'Activo'},
-  { id: 2, Apellidos: 'Lannister', Nombre: 'Cersei', Diagnostico: 1, Activo: 'Activo'},
-  { id: 3, Apellidos: 'Lannister', Nombre: 'Jaime', Diagnostico: 2, Activo: 'Activo'},
-  { id: 4, Apellidos: 'Stark', Nombre: 'Arya', Diagnostico: 1, Activo: 'Activo'},
-  { id: 5, Apellidos: 'Targaryen', Nombre: 'Daenerys', Diagnostico: 2, Activo: 'Activo'},
-  { id: 6, Apellidos: 'Melisandre', Nombre: null, Diagnostico: 1, Activo: 'Activo'},
-  { id: 7, Apellidos: 'Clifford', Nombre: 'Ferrara', Diagnostico: 1, Activo: 'Activo'},
-  { id: 8, Apellidos: 'Frances', Nombre: 'Rossini', Diagnostico: 1, Activo: 'Activo'},
-  { id: 9, Apellidos: 'Roxie', Nombre: 'Harvey', Diagnostico: 2, Activo: 'Activo'},
+  { id: 1, Apellidos: 'Snow', Nombre: 'Jon', Diagnostico: 3 , Activo: 'Activo', nacimiento: '17/07/2002'},
+  { id: 2, Apellidos: 'Lannister', Nombre: 'Cersei', Diagnostico: 1, Activo: 'Activo', nacimiento: '17/07/2002'},
+  { id: 3, Apellidos: 'Lannister', Nombre: 'Jaime', Diagnostico: 2, Activo: 'Activo', nacimiento: '17/07/2002'},
+  { id: 4, Apellidos: 'Stark', Nombre: 'Arya', Diagnostico: 1, Activo: 'Activo', nacimiento: '17/07/2002'},
+  { id: 5, Apellidos: 'Targaryen', Nombre: 'Daenerys', Diagnostico: 2, Activo: 'Activo', nacimiento: '17/07/2002'},
+  { id: 6, Apellidos: 'Melisandre', Nombre: null, Diagnostico: 1, Activo: 'Activo', nacimiento: '17/07/2002'},
+  { id: 7, Apellidos: 'Clifford', Nombre: 'Ferrara', Diagnostico: 1, Activo: 'Activo', nacimiento: '17/07/2002'},
+  { id: 8, Apellidos: 'Frances', Nombre: 'Rossini', Diagnostico: 1, Activo: 'Activo', nacimiento: '17/07/2002'},
+  { id: 9, Apellidos: 'Roxie', Nombre: 'Harvey', Diagnostico: 2, Activo: 'Activo', nacimiento: '17/07/2002'},
 ]
 
 function index() {
@@ -72,17 +76,20 @@ function index() {
       </button>
       
       <ul>
-        <div style={{ height: '475px', width: '100%', marginTop: '10px' }}>
+        <div style={{ height: '500px', width: '100%', marginTop: '10px' }}>
           <DataGrid
             rows={Carta}
             columns={columns}
             initialState={{
               pagination: {
-                paginationModel: { page: 0, pageSize: 7},
+                paginationModel: { page: 0, pageSize: 10},
               },
             }}
-            pageSizeOptions={[7, 50]}
+            pageSizeOptions={[10, 50]}
             checkboxSelection
+            slots={{
+              toolbar: GridToolbar,
+            }}
           />
         </div>
       </ul> 

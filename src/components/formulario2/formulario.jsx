@@ -24,6 +24,21 @@ const currencies = [
   },
 ];
 
+const localidades = [
+  {
+    value: '1',
+    label: 'CRIT - Aguascalientes',
+  },
+  {
+    value: '2',
+    label: 'CRIT – Baja California',
+  },
+  {
+    value: '3',
+    label: 'CRIT – Baja California Sur',
+  },
+];
+
 const formulario = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
     const [value, setValue] = React.useState(dayjs('2023-06-19'));
@@ -78,10 +93,38 @@ const formulario = () => {
                 onChange={handleChange}
                 value={values.nombre}
                 name="nombre"
-                InputProps={{
+                /* InputProps={{
                   readOnly: true,
-                }}
+                }} */
                 sx={{ gridColumn: "span 4" }}
+              />
+              <TextField
+                fullWidth
+                variant="outlined"
+                type="text"
+                label="Apellido paterno"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.nombre}
+                name="apellidoP"
+                /* InputProps={{
+                  readOnly: true,
+                }} */
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="outlined"
+                type="text"
+                label="Apellido materno"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.nombre}
+                name="apellidoM"
+                /* InputProps={{
+                  readOnly: true,
+                }} */
+                sx={{ gridColumn: "span 2" }}
               />
               <TextField
                 fullWidth
@@ -94,10 +137,10 @@ const formulario = () => {
                 value={values.grado}
                 defaultValue="1"
                 name="grado"
-                InputProps={{
+                /* InputProps={{
                   readOnly: true,
-                }}
-                sx={{ gridColumn: "span 4" }}
+                }} */
+                sx={{ gridColumn: "span 2" }}
               >
                 {currencies.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
@@ -105,14 +148,35 @@ const formulario = () => {
                   </MenuItem>
                 ))}
               </TextField>
-              
+              <TextField
+                fullWidth
+                select
+                variant="outlined"
+                type="text"
+                label="Localidad"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.grado}
+                defaultValue="1"
+                name="localidad"
+                /* InputProps={{
+                  readOnly: true,
+                }} */
+                sx={{ gridColumn: "span 2" }}
+              >
+                {localidades.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>              
                <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={[ 'DatePicker']} sx={{gridColumn: "span 4"}}>
                   <DatePicker
                     format='DD-MM-YYYY'
-                    label="Fecha De Inicio"
+                    label="Fecha De Nacimiento"
                     value={value}
-                    readOnly='true'
+                    /* readOnly='true' */
                     onChange={(newValue) => setValue(newValue)}
                     sx={{width: '100%'}}
                   />

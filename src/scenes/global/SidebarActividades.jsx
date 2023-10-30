@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme} from "@mui/material";
+import { Box, IconButton, Typography, useMediaQuery, useTheme} from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
@@ -11,6 +11,9 @@ import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBullet
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import ImageIcon from '@mui/icons-material/Image';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import tea from '../../images/logo 1.png'
 import avatar1 from '../../assets/avatar1.jpg'
 
@@ -48,6 +51,8 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(localStorage.getItem("sidebar_collapsed") === "true");
   const [selected, setSelected] = useState("");
+  const isMobile = useMediaQuery("(max-width:767px)");
+  
   //console.log(typeof isCollapsed)
   //const location = useLocation()
   //console.log('location', location)
@@ -115,10 +120,17 @@ const Sidebar = () => {
             )}
           </MenuItem>
           {/* User */}
-          {!isCollapsed && (
+        {/*   {!isCollapsed && (
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
-                
+                <img
+                  alt="profile-user"
+                  width="100px"
+                  height="100px"
+                  src={avatar1}
+
+                  style={{ cursor: "pointer", borderRadius: "50%", objectFit:'cover' }}
+                />
               </Box>
               <Box textAlign="center">
                 <Typography
@@ -127,13 +139,57 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Categorias
+                  Lizeth
+                </Typography>
+                <Typography variant="h5" color={colors.greenAccent[500]}>
+                  Paciente
                 </Typography>
               </Box>
             </Box>
-          )}    
+          )}  */}   
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          {/* movil */}
+          {isMobile && (
+            <>
+          <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }} 
+            >
+              Paginas
+            </Typography>
+          <Item
+              title="Pacientes"
+              to="/"
+              icon={<PeopleAltIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
             <Item
+              title="Actividades"
+              to="/actividades"
+              icon={<EditNoteOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Imagenes"
+              to="/actividades"
+              icon={<ImageOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+          <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Paciente
+            </Typography>
+            </>
+            )}
+          {/* END movil */}
+          <Item
               title="Alimentos"
               to="/actividades"
               icon={<FormatListBulletedOutlinedIcon />}
@@ -213,4 +269,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Sidebar;            
