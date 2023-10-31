@@ -19,7 +19,7 @@ function error() {
         </Button>
       </Box>
       <Box display="flex" justifyContent="center" mt="10px">
-        <Image className="imageerror" src="images/Error.png"></Image>
+        <Image className="imageerror" src="images/404.png"></Image>
       </Box>
       
     </div>

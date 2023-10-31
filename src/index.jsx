@@ -86,7 +86,6 @@ function index() {
               },
             }}
             pageSizeOptions={[10, 50]}
-            checkboxSelection
             slots={{
               toolbar: GridToolbar,
             }}
