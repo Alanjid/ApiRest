@@ -76,7 +76,7 @@ function index() {
       </button>
       
       <ul>
-        <div style={{ height: '500px', width: '100%', marginTop: '10px' }}>
+        <div style={{ height: '90%', width: '100%', marginTop: '10px' }}>
           <DataGrid
             rows={Carta}
             columns={columns}

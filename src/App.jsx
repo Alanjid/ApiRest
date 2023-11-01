@@ -49,7 +49,7 @@ import Añadirobservaciones from './scenes/Añadirobservaciones';
     element: <Index/>,
   },
   {
-    path:"/añadiro",
+    path:"/paciente/añadirobservacion",
     element: <Añadirobservaciones/>,
   },
   {

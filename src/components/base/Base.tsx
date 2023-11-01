@@ -33,7 +33,7 @@ function Base ({children}: BaseProps) : JSX.Element {
           <div className='app'>
           <Sidebar isSidebar={isSidebar}/>
           {/* <RouterProvider router={router}/> */}
-            <main className='content'>
+            <main className='content' style={{maxWidth: '100%'}}>
             
               <Topbar setIsSidebar={setIsSidebar}/>
                <Routes>

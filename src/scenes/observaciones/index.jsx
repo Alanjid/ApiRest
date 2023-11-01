@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, Hidden, Typography } from "@mui/material"
+import { Box, Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, Hidden, Typography, Alert, Stack } from "@mui/material"
 import { useState } from 'react'
 import * as React from 'react';
 import Base from '../../components/base/Base'
@@ -8,7 +8,10 @@ import {
     GridRowModes,
     DataGrid,
     GridToolbar,
+    GridFooter,
     GridToolbarContainer,
+    useGridApiContext,
+    useGridApiEventHandler,
     GridActionsCellItem,
     GridRowEditStopReasons,
   } from '@mui/x-data-grid';
@@ -16,27 +19,51 @@ import {
 import { blue } from "@mui/material/colors";
 
 const Dashboard = () => {
-    const [open, setOpen] = React.useState(false);
-    const [selectedRows, setSelectedRows] = useState([]);
-    const handleClickOpen = () => {
-        setOpen(true);
+    function Footer() {
+        const [message, setMessage] = React.useState('');
+        const apiRef = useGridApiContext();
+      
+        const handleRowClick = (params) => {
+          setMessage(`Observacion: ${params.row.Observacion}`);
         };
-    
-        const handleClose = () => {
-        setOpen(false);
-        };
-
-    const [val, setVal] = React.useState(5);
-
-    const handleChange = (event) => {
-        setVal(event.target.value);
-    };
+      
+        useGridApiEventHandler(apiRef, 'rowClick', handleRowClick);
+      
+        return (
+          <React.Fragment>
+            <GridFooter />
+            {message && <Alert severity="info">{message}</Alert>}
+          </React.Fragment>
+        );
+      }
 
     const columns = [
         { field: 'id', headerName: 'id', width: 70, align: 'center' },
         { field: 'Fecha', headerName: 'Fecha', width: 300, align: 'center' },
         { field: 'Responsable', headerName: 'Responsable', width: 300, align: 'center' },
         { field: 'Observacion', headerName: 'Observacion', width: 300, align: 'center' },
+        {
+            field: 'Accion',
+            headerName: 'Accion',
+            width: 300,
+            cellClassName: 'actions',
+            align: 'right',
+            renderCell: (cellValues) => {
+              return (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  /* onClick={(event) => {
+                    handleClick(event, cellValues);
+                  }} */
+                  href='/paciente'
+                  style={{width: '100%', height: '70%'}}
+                >
+                  Ver más
+                </Button>
+              );
+            }
+          },
       ];
       
       const Carta = [
@@ -53,14 +80,15 @@ const Dashboard = () => {
 
     return (
         <Base>
-            <Box m='20px' padding='20px'  sx={{background:'#fcfcfc'}}>
-                <Box display='flex' justifyContent='space-between' alignItems='center'>
-                    <a href="/añadiro" type="button" className="btn btn-primary botonañadir">Añadir Observación
+            <Box m='20px' sx={{background:'#fcfcfc'}}>
+                <Box paddingBottom={3} paddingTop={2}>
+                    <a href="/paciente/añadirobservacion" type="button" className="btn btn-primary botonañadir">Añadir Observación
                         <AddIcon sx={{marginLeft: '20px'}}></AddIcon>
                     </a>
                 </Box>
                 <Box>
-                    <div style={{ height: '500px', width: '100%', marginTop: '10px' }}>
+                    <ul>
+                        <div style={{ height: '200', width: '100%', marginTop: '10px' }}>
                         <DataGrid
                             rows={Carta}
                             columns={columns}
@@ -72,24 +100,14 @@ const Dashboard = () => {
                             pageSizeOptions={[10, 50]}
                             slots={{
                             toolbar: GridToolbar,
+                            footer: Footer,
                             }}
                         />
-                    </div>
+                        </div>
+                    </ul> 
                 </Box>
-            </Box>
-            <div>
-                <Dialog open={open} onClose={handleClose} fullWidth maxWidth='sm'>
-                <DialogTitle><Typography variant='h3'>Evaluación</Typography></DialogTitle>
-                <DialogContent dividers>
-                    <Typography mt='25px' variant="h4" sx={{fontWeight:'bold'}}>Observaciones:</Typography><Typography variant="h4">Mostró dificultades en el uso del lenguaje verbal para comunicar sus pensamientos y emociones durante la actividad.
-                      Se promovió el uso de palabras y frases sencillas para fomentar la comunicación verbal.</Typography>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color='blue'>Cerrar</Button>                    
-                </DialogActions>
-                </Dialog>
-            </div>
-            
+                
+            </Box>         
         </Base>
     )
 }
