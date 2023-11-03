@@ -20,9 +20,9 @@ import { Link } from '@mui/material';
 
 const columns = [
   { field: 'id', headerName: 'Karnet', width: 70, align: 'center' },
-  { field: 'Nombre', headerName: 'Nombre', width: 300, align: 'center' },
-  { field: 'Apellidos', headerName: 'Apellidos', width: 300, align: 'center' },
-  { field: 'nacimiento', headerName: 'Fecha De Nacimiento', width: 300, align: 'center' },
+  { field: 'Nombre', headerName: 'Nombre', width: 300, minWidth: 150, maxWidth: 300, align: 'center' },
+  { field: 'Apellidos', headerName: 'Apellidos', width: 300, minWidth: 150, maxWidth: 300, align: 'center' },
+  { field: 'nacimiento', headerName: 'Fecha De Nacimiento', width: 200, minWidth: 150, maxWidth: 200, align: 'center' },
   {
     field: 'Diagnostico',
     headerName: 'Diagnostico',
@@ -32,7 +32,9 @@ const columns = [
   {
     field: 'Accion',
     headerName: 'Accion',
-    width: 300,
+    width: 230,
+    minWidth: 150, 
+    maxWidth: 230,
     cellClassName: 'actions',
     align: 'right',
     renderCell: (cellValues) => {
@@ -76,7 +78,7 @@ function index() {
       </button>
       
       <ul>
-        <div style={{ height: '90%', width: '100%', marginTop: '10px' }}>
+        <div style={{ maxHeight: '100%', minHeight: '200px',width: '100%', marginTop: '10px' }}>
           <DataGrid
             rows={Carta}
             columns={columns}
