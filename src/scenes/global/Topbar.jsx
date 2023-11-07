@@ -104,7 +104,7 @@ const Topbar = () => {
         <Box display="flex" alignItems='center'>
           {!isMobile &&(
           <>
-            <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">IMAGENES</button></a>
+            <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">IMÁGENES</button></a>
             <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
             <a href='/actividades' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
           </>
