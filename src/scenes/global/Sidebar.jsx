@@ -159,7 +159,7 @@ const Sidebar = ({toggled,setToggled}) => {
               setSelected={setSelected}
             />
             <Item
-              title="Imagenes"
+              title="Imágenes"
               to="/actividades"
               icon={<ImageOutlinedIcon />}
               selected={selected}
