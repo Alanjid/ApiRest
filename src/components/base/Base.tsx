@@ -26,16 +26,17 @@ interface BaseProps {
 function Base ({children}: BaseProps) : JSX.Element {
     const [theme, colorMode] = useMode()
     const [isSidebar, setIsSidebar] = useState(true);
+    const [toggled, setToggled] = useState(false);
     return (
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <div className='app'>
-          <Sidebar isSidebar={isSidebar}/>
+          <Sidebar toggled={toggled} setToggled={setToggled}/>
           {/* <RouterProvider router={router}/> */}
             <main className='content'>
             
-              <Topbar setIsSidebar={setIsSidebar}/>
+              <Topbar toggled={toggled} setToggled={setToggled} />
                <Routes>
                 <Route path='/observaciones' element={<Observaciones/>} />              
                 <Route path='/prueba3' element={<Dashboard/>} />              
