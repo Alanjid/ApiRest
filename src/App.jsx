@@ -4,9 +4,6 @@ import { useEffect } from 'react'
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  Outlet,
-  Link
 } from "react-router-dom";
 
 import { ColorModeContext, useMode } from './theme';

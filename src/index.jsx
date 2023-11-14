@@ -12,7 +12,9 @@ import {
   GridActionsCellItem,
   GridRowEditStopReasons,
 } from '@mui/x-data-grid';
-import { Link } from '@mui/material';
+import { Hidden, Link } from '@mui/material';
+import { disConnect } from 'echarts';
+import { DisabledByDefault } from '@mui/icons-material';
 
 /* const handleClick = (event, cellValues) => {
   console.log(cellValues.row);
@@ -90,6 +92,20 @@ function index() {
             pageSizeOptions={[10, 50]}
             slots={{
               toolbar: GridToolbar,
+            }}
+            localeText={{
+              toolbarDensity: 'Tamaño',
+              toolbarDensityLabel: 'Tamaño',
+              toolbarDensityCompact: 'Pequeñas',
+              toolbarDensityStandard: 'Medianas',
+              toolbarDensityComfortable: 'Grandes',
+              toolbarColumns: 'Columnas',
+              toolbarColumnsLabel: 'Columnas',
+              toolbarFilters: 'Filtrar',
+              toolbarFiltersLabel: 'Filtrar',
+              toolbarExport: 'Exportar',
+              toolbarExportLabel: 'Exportar',
+              toolbarExportCSV: "Excel",
             }}
           />
         </div>

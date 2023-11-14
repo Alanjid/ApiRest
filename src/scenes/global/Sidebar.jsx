@@ -46,12 +46,16 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   };
 
 
-const Sidebar = () => {
+const Sidebar = ({toggled,setToggled}) => {
+  
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(localStorage.getItem("sidebar_collapsed") === "true");
   const [selected, setSelected] = useState("");
-  const isMobile = useMediaQuery("(max-width:767px)");
+  const isMobile = useMediaQuery("(max-width:768px)");
+
+  const sidebarMobile = useMediaQuery("(max-width:768px)");
+
   
   //console.log(typeof isCollapsed)
   //const location = useLocation()
@@ -88,15 +92,20 @@ const Sidebar = () => {
         },
       }}
     >
-      <ProSidebar collapsed={isCollapsed}>
+ 
+      <ProSidebar collapsed={isCollapsed} toggled={toggled} breakPoint="md">
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
-            onClick={() => handleSetIsCollapsed(!isCollapsed)}
+            onClick={() => {
+              !isMobile ? handleSetIsCollapsed(!isCollapsed) : setToggled(!toggled)
+              
+            }}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
               color: colors.grey[100],
+      
             }}
           >
         
@@ -106,6 +115,7 @@ const Sidebar = () => {
                 justifyContent="space-between"
                 alignItems="center"
                 ml="15px"
+              
               >
             {/*     <Typography variant="h3" color={colors.grey[100]}>
                   sd
@@ -113,9 +123,12 @@ const Sidebar = () => {
                 <Box width='100%' justifyContent='start' alignItems='center' display='flex'>
                   <img style={{width:100}} src={tea} alt="MyTea" />
                 </Box>
-                <IconButton onClick={() => handleSetIsCollapsed(!isCollapsed)}>
-                  <MenuOutlinedIcon />
-                </IconButton>
+                
+                   <IconButton onClick={() => isMobile ? setToggled(!toggled) : handleSetIsCollapsed(!isCollapsed)}>
+                    <MenuOutlinedIcon />
+                    </IconButton>
+                
+                  
               </Box>
             )}
           </MenuItem>
@@ -146,7 +159,7 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Imagenes"
+              title="Imágenes"
               to="/actividades"
               icon={<ImageOutlinedIcon />}
               selected={selected}
@@ -238,7 +251,9 @@ const Sidebar = () => {
           </Box>
         </Menu>
       </ProSidebar>
+     
     </Box>
+    
   );
 };
 

@@ -27,7 +27,7 @@ const Dashboard = () => {
     { field: 'Observacion', headerName: 'Observacion', width: 350, minWidth: 150, maxWidth: 350, align: 'center' },
     {
       field: 'Accion',
-      headerName: 'Accion',
+      headerName: 'Acción',
       width: 150,
       minWidth: 70, 
       maxWidth: 150,
@@ -102,6 +102,21 @@ const Dashboard = () => {
                         pageSizeOptions={[10, 50]}
                         slots={{
                         toolbar: GridToolbar,               
+                        }}
+                        localeText={{
+                          toolbarDensity: 'Tamaño',
+                          toolbarDensityLabel: 'Tamaño',
+                          toolbarDensityCompact: 'Pequeñas',
+                          toolbarDensityStandard: 'Medianas',
+                          toolbarDensityComfortable: 'Grandes',
+                          toolbarColumns: 'Columnas',
+                          toolbarColumnsLabel: 'Columnas',
+                          toolbarFilters: 'Filtrar',
+                          toolbarFiltersLabel: 'Filtrar',
+                          toolbarExport: 'Exportar',
+                          toolbarExportLabel: 'Exportar',
+                          toolbarExportCSV: "Excel",
+                          toolbarExportPrint: "Imprimir",
                         }}
                         onRowClick={handleRowClick}
                     />

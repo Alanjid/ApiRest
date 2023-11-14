@@ -12,6 +12,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import Logout from '@mui/icons-material/Logout';
 
 function AccountMenu() {
@@ -91,34 +92,33 @@ function AccountMenu() {
   );
 }
 
-const Topbar = () => {
+const Topbar = ({toggled,setToggled}) => {
+  
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
     const isMobile = useMediaQuery("(max-width:767px)");
+    const sidebarMobile = useMediaQuery("(max-width:576px)");
   
     return (
-      <Box display="flex" justifyContent="end" p='10px' sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>        
+      <Box display="flex" alignItems='center' justifyContent={isMobile ? "space-between" :"end"} p='10px' sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>        
         
         {/* ICONS */}
-        <Box display="flex" alignItems='center'>
+       
           {!isMobile &&(
           <>
-            <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">IMAGENES</button></a>
+            <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">IMÁGENES</button></a>
             <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
             <a href='/actividades' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
           </>
           )}
-{/*           <a className="navbar-brand me-2" href="#" style={{paddingBottom: "1rem"}}>
-              <img
-              src="images/icon.png"
-              height="40"
-              alt=""
-              loading="lazy"
-              />
-          </a> */}
+         {isMobile && (
+          <IconButton onClick={() => setToggled(!toggled)}>
+            <MenuOutlinedIcon />
+          </IconButton>
+         )}
           <AccountMenu />
-        </Box>
+        
       </Box>
     );
   };
