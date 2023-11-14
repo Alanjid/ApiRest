@@ -111,7 +111,7 @@ const Sidebar = () => {
                   sd
                 </Typography> */}
                 <Box width='100%' justifyContent='start' alignItems='center' display='flex'>
-                  <img style={{width:100}} src={tea} alt="" />
+                  <img style={{width:100}} src={tea} alt="MyTea" />
                 </Box>
                 <IconButton onClick={() => handleSetIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -120,33 +120,6 @@ const Sidebar = () => {
             )}
           </MenuItem>
           {/* User */}
-        {/*   {!isCollapsed && (
-            <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
-                <img
-                  alt="profile-user"
-                  width="100px"
-                  height="100px"
-                  src={avatar1}
-
-                  style={{ cursor: "pointer", borderRadius: "50%", objectFit:'cover' }}
-                />
-              </Box>
-              <Box textAlign="center">
-                <Typography
-                  variant="h2"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}
-                >
-                  Lizeth
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Paciente
-                </Typography>
-              </Box>
-            </Box>
-          )}  */}   
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
           {/* movil */}
           {isMobile && (

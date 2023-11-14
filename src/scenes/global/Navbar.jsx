@@ -54,7 +54,7 @@ function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar src='images/icon.png' sx={{ width: 42, height: 42 }} />
+            <Avatar src='images/icon.png' sx={{ width: 42, height: 42 }} alt='Mi cuenta' />
           </IconButton>
         </Tooltip>
       </Box>
@@ -138,14 +138,6 @@ const Navbar = () => {
             <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
             <a href='/actividades' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
             <AccountMenu/>
-            {/* <a className="navbar-brand me-2" href="#">
-                <img
-                src="images/icon.png"
-                height="40"
-                alt=""
-                loading="lazy"
-                />
-            </a> */}
           </>
           )}
           {isMobile && (
