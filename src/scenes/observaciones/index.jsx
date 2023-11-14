@@ -15,7 +15,7 @@ import {
     GridActionsCellItem,
     GridRowEditStopReasons,
   } from '@mui/x-data-grid';
-  import { Link } from '@mui/material';
+import { Link } from '@mui/material';
 import { blue } from "@mui/material/colors";
 
 const Dashboard = () => {
@@ -28,18 +28,17 @@ const Dashboard = () => {
     {
       field: 'Accion',
       headerName: 'Acción',
-      width: 150,
+      width: 240,
       minWidth: 70, 
-      maxWidth: 150,
+      maxWidth: 240,
       cellClassName: 'actions',
       align: 'right',
       renderCell: (cellValues) => {
         return (
           <Button
             variant="contained"
-            color="primary"
             onClick={handleClickOpen}
-            style={{width: '100%', height: '70%'}}
+            style={{width: '100%', height: '70%', backgroundColor: '#4495E5'}}
           >
             Ver más
           </Button>

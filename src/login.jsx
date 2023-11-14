@@ -35,14 +35,14 @@ function login() {
   const [Pass, setPass] = useState("");
 
   const publicar = async (values) => {
-    const data = {
+    Axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
       email: values.email,
       password: values.password,
-    }
-    Axios.post("http://localhost:3003/login" ,{data}).then((response) => {
+    }).then((response) => {
+      console.log(response.data)
       if(response.data){
         setEmpleados(response.data);
-        console.log("a "+EmpleadosList);
+        console.log(EmpleadosList);
       }else{
         console.log("Error");
       }

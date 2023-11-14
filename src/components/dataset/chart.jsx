@@ -18,9 +18,9 @@ export default function chart() {
       height={300}
       sx={{maxWidth: '100%'}}
       series={[
-        { data: pData, label: 'pv', id: 'pvId' },
-        { data: uData, label: 'uv', id: 'uvId' },
-        { data: lData, label: 'lv', id: 'lvId' },
+        { data: pData, label: 'pv', id: 'pvId', color: '#DE0B1C' },
+        { data: uData, label: 'uv', id: 'uvId', color: '#17E310' },
+        { data: lData, label: 'lv', id: 'lvId', color: '#053FA7' },
       ]}
       xAxis={[{ data: xLabels, scaleType: 'band' }]}
     />
