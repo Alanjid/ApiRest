@@ -22,9 +22,9 @@ import { Formik } from "formik";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 function login() {
-
+  const noti = withReactContent(Swal);
   const [showPassword, setShowPassword] = React.useState(false);
-
+  const [EmpleadosList, setEmpleados] = useState([]);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
@@ -34,26 +34,26 @@ function login() {
   const [Nombre, setNombre] = useState("");
   const [Pass, setPass] = useState("");
 
-  const get = () => {
-    Axios.post("http://localhost:3003/logueo", {
-      Nombre: Nombre,
-      Pass: Pass,
-    })
-      .then(() => {
-        noti.fire({
-          title: <strong>Conexión exitosa</strong>,
-          html: <i>LOGIN CORRECTO</i>,
-          icon: "success",
-          timer: 2000,
-        });
+  const publicar = async (values) => {
+    const data = {
+      email: values.email,
+      password: values.password,
+    }
+    Axios.get("http://localhost:3003/login" ,{data}).then((response) => {
+      if(response.data){
+        setEmpleados(response.data);
+        console.log("a "+EmpleadosList);
+      }else{
+        console.log("Error");
+      }
+    }).catch(function(error){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No Se Logro Recuperar Los Empleados',
+        footer: JSON.parse(JSON.stringify(error)).message==="Network Error" ? "Intente Más Tarde" : JSON.parse(JSON.stringify(error)).message
       })
-      .catch(function (error) {
-        Swal.fire({
-          icon: "error",
-          title: "Error...",
-          text: "Usuario y/o Password incorrectas",
-        });
-      });
+    });
   };
 
   return (
@@ -75,7 +75,7 @@ function login() {
             <h4 className="salto letra">INICIO DE SESIÓN</h4>
 
             <Box display={"flex"} mt={4} flexDirection={"column"}>
-              <Formik onSubmit={""} initialValues={initialValues} validationSchema={checkoutSchema}>
+              <Formik onSubmit={publicar} initialValues={initialValues} validationSchema={checkoutSchema}>
                 {({
                   errors,
                   touched,
@@ -128,7 +128,10 @@ function login() {
                       <Grid item sx={{ paddingTop: ".5rem !important" }}>
                         <FormControlLabel
                           control={<Checkbox color="primary" />}
+                          name="recordarme"
+                          id="recordarme"
                           label="Recordarme"
+                          onChange={handleChange}
                         />
                       </Grid>
                     </Grid>
@@ -199,6 +202,7 @@ const checkoutSchema = yup.object().shape({
 
 const initialValues = {
   email: "",
+  recordarme: false,
   password:""
 };
 
