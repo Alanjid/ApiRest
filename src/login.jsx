@@ -24,7 +24,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 function login() {
   const noti = withReactContent(Swal);
   const [showPassword, setShowPassword] = React.useState(false);
-  const [EmpleadosList, setEmpleados] = useState([]);
+  const [terapeutas, setterapeutas] = useState({});
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
@@ -34,23 +34,33 @@ function login() {
   const [Nombre, setNombre] = useState("");
   const [Pass, setPass] = useState("");
 
-  const publicar = async (values) => {
+  const publicar = (values) => {
     Axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
       email: values.email,
       password: values.password,
     }).then((response) => {
-      console.log(response.data)
-      if(response.data){
-        setEmpleados(response.data);
-        console.log(EmpleadosList);
+      if(response.data.length===1){
+        setterapeutas(response.data[0]);
+        Swal.fire({
+          icon: 'success',
+          title: 'Acceso exitoso',
+          text: 'Bienvenido ' + terapeutas.app,
+          timer: 2000,
+        })
       }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Acceso denegado',
+          text: 'Revisa que tus datos sean correctos',
+          timer: 2000,
+        })
         console.log("Error");
       }
     }).catch(function(error){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'No Se Logro Recuperar Los Empleados',
+        text: 'No se puede iniciar seción actualmente',
         footer: JSON.parse(JSON.stringify(error)).message==="Network Error" ? "Intente Más Tarde" : JSON.parse(JSON.stringify(error)).message
       })
     });
