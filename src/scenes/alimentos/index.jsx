@@ -1,4 +1,4 @@
-import Base from '../../components/base/BaseActividades'
+import Base from '../../components/base/Base'
 import Header from "../../components/header/Header"
 import { Box, Card, CardContent } from "@mui/material"
 import * as React from 'react';

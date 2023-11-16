@@ -9,7 +9,7 @@ const Header = ({ title, subtitle }) => {
     <Box marginBottom='20px'  /* sx={{backgroundColor: '#F4F6F9'}} */>
       <Typography
         variant="h2"
-        color={colors.grey[100]}
+        color={colors.grey[200]}
         fontWeight="bold"
       >
         {title}

@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material"
-import Base from '../../components/base/BaseActividades'
+import Base from '../../components/base/Base'
 import Header from "../../components/header/Header"
 import Textarea from "../../components/textarea/textarea"
 
