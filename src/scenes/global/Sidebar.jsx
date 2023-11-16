@@ -23,8 +23,7 @@ const handleSelectedItem = (title, setSelected) =>{
   localStorage.setItem('item',title)
 }
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
-  console.log(selected)
+const Item = ({ title, to, icon, selected, setSelected }) => {  
     selected = localStorage.getItem('item')
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -37,8 +36,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
         }}
         onClick={() => handleSelectedItem(title, setSelected)}
         icon={icon}
-      >
-        {console.log(selected === title)}
+      >        
         <Typography>{title}</Typography>
         <Link to={to} />
       </MenuItem>
@@ -58,8 +56,11 @@ const Sidebar = ({toggled,setToggled}) => {
 
   
   //console.log(typeof isCollapsed)
-  //const location = useLocation()
-  //console.log('location', location)
+  var {pathname} = useLocation()
+  console.log('location', pathname)
+
+  pathname = pathname.split('/')
+  console.log(pathname[1])
 
   useEffect(() => {
     const collapsedValue = localStorage.getItem("sidebar_collapsed");
@@ -93,7 +94,7 @@ const Sidebar = ({toggled,setToggled}) => {
       }}
     >
  
-      <ProSidebar collapsed={isCollapsed} toggled={toggled} breakPoint="md">
+      <ProSidebar width='224px' collapsed={isCollapsed} toggled={toggled} breakPoint="md">
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
@@ -117,8 +118,7 @@ const Sidebar = ({toggled,setToggled}) => {
                 ml="15px"
               
               >
-            {/*     <Typography variant="h3" color={colors.grey[100]}>
-                  sd
+            {/*     <Typography variant="h3" color={colors.grey[100]}>                  
                 </Typography> */}
                 <Box width='100%' justifyContent='start' alignItems='center' display='flex'>
                   <img style={{width:100}} src={tea} alt="MyTea" />
@@ -132,8 +132,8 @@ const Sidebar = ({toggled,setToggled}) => {
               </Box>
             )}
           </MenuItem>
-          {/* User */}
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+        
+          <Box>
           {/* movil */}
           {isMobile && (
             <>
@@ -175,7 +175,50 @@ const Sidebar = ({toggled,setToggled}) => {
             </>
             )}
           {/* END movil */}
+
+            {/* Items detalles paciente */}
+            {pathname[1]=='actividades' ? (<>
+              <Item
+              title="Alimentos"
+              to="/actividades"
+              icon={<FormatListBulletedOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
             <Item
+              title="Bebidas"
+              to="/actividades/bebidas"
+              icon={<FormatListBulletedOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
+              title="Acciones"
+              to="/actividades/acciones"
+              icon={<FormatListBulletedOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Partes del cuerpo"
+              to="/actividades/cuerpo"
+              icon={<FormatListBulletedOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />          
+            <Item
+              title="Prendas de vestir"
+              to="/actividades/prendas"
+              icon={<FormatListBulletedOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            </>
+            ) :
+            (
+              <>
+               <Item
               title="Lizeth"
               to="/paciente"
               icon={<PersonOutlineOutlinedIcon />}
@@ -189,14 +232,6 @@ const Sidebar = ({toggled,setToggled}) => {
               selected={selected}
               setSelected={setSelected}
             />
-{/* 
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Data
-            </Typography> */}
             <Item
               title="Actividades"
               to="/paciente/actividades"
@@ -211,36 +246,6 @@ const Sidebar = ({toggled,setToggled}) => {
               selected={selected}
               setSelected={setSelected}
             />          
-
-{/*             <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Pages
-            </Typography> */}
-   {/*          <Item
-              title="Avances"
-              to="/form"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />            
-            <Item
-              title="FAQ Page"
-              to="/faq"
-              icon={<HelpOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            /> */}
-
-            {/* <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Charts
-            </Typography> */}
             <Item
               title="Avances"
               to="/paciente/avances"
@@ -248,6 +253,44 @@ const Sidebar = ({toggled,setToggled}) => {
               selected={selected}
               setSelected={setSelected}
             />
+              </>
+            )
+            }
+         {/*    <Item
+              title="Lizeth"
+              to="/paciente"
+              icon={<PersonOutlineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Observaciones"
+              to="/paciente/observaciones"
+              icon={<EditNoteOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Actividades"
+              to="/paciente/actividades"
+              icon={<FormatListBulletedOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Tareas en casa"
+              to="/paciente/tareas"
+              icon={<HomeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />          
+            <Item
+              title="Avances"
+              to="/paciente/avances"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            /> */}
           </Box>
         </Menu>
       </ProSidebar>

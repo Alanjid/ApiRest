@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap');
 
-html,
-body,
+
 #root,
 .app,
 .content{
@@ -10,6 +9,10 @@ body,
     font-family: 'Source Sans 3', sans-serif;
     background-color: #f4f6f9;;
 }
+
+
+
+
 .app{
     display: flex;
     position: relative;
