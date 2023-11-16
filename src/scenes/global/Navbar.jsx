@@ -32,9 +32,12 @@ import ImageIcon from '@mui/icons-material/Image';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
+import { killSession } from '../../redux/userSlice';
+import { useDispatch } from 'react-redux';
 
 function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const dispatch = useDispatch();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -42,6 +45,10 @@ function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const destroySession = () => {
+    dispatch(killSession())
+  };
+
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -99,11 +106,11 @@ function AccountMenu() {
           </ListItemIcon>          
             Mi cuenta         
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={destroySession}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
-          Cerrar sesión
+          Cerrar Sesión
         </MenuItem>
       </Menu>
     </React.Fragment>

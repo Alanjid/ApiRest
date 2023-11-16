@@ -11,7 +11,6 @@ import { addUser } from './redux/userSlice';
 import { Box, Button, Checkbox, FormControlLabel, Grid, IconButton, InputAdornment, TextField, Typography,} from "@mui/material";
 import { Formik } from "formik";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Header from './components/Header'
 
 function login() {
   const dispatch = useDispatch();
@@ -70,7 +69,6 @@ function login() {
 
   return (
     <div className="container-fluid" style={{ background: "#fbfbfb" }}>
-      <Header/>
       <div className="row">
         <div className="col-md-6 px-0 d-none d-md-block">
           <div className="d-flex" style={{height:'100vh',minHeight:'100%'}}>

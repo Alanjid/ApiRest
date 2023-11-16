@@ -15,7 +15,6 @@ import {
 import { Hidden, Link } from '@mui/material';
 import { disConnect } from 'echarts';
 import { DisabledByDefault } from '@mui/icons-material';
-import Header from './components/Header';
 
 /* const handleClick = (event, cellValues) => {
   console.log(cellValues.row);
@@ -75,7 +74,6 @@ function index() {
 
   return (
     <div>
-      <Header/>
       <Navbar/>
       <button type="button" className="btn btn-primary botonañadir">Añadir
         <img src="images/Plus.png" className='imagenañadir' height="20" alt="MyTEAPony Logo" loading="lazy"/>

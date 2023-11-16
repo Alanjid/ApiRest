@@ -42,6 +42,7 @@ const Card_actividad = ({titulo,imagen}) =>{
             height="200"
             image={imagen}
             alt="categoria"
+            sx={{objectFit: 'contain'}}
             />
             <CardContent>
             <Typography  variant="h4" component="p">

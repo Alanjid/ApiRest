@@ -34,10 +34,6 @@ import Paciente from './scenes/paciente';
 import Cuenta from './scenes/cuenta';
 import ActividadesRealizadas from './scenes/actividades_realizadas';
 import Añadirobservaciones from './scenes/Añadirobservaciones';
-/* import Header from './components/Header';
-import Email from './components/Email';
-import { useDispatch } from 'react-redux';
-import { addUser } from './redux/userSlice'; */
 
  const router = createBrowserRouter([
   {
@@ -123,14 +119,6 @@ import { addUser } from './redux/userSlice'; */
 ]) 
 
 function App(){
-  /* const dispatch = useDispatch();
-
-  useEffect ( () => {
-    fetch("http://localhost:3003/users")
-      .then((response) => response.json())
-      .then((data) =>dispatch(addUser(data)))
-      .catch((error) => console.log(error))
-  },[]); */
 
   return(
     <>
@@ -140,8 +128,3 @@ function App(){
 }
 
 export default App
-
-{/* <div>
-      <Header/>
-      <Email/>
-    </div> */}
