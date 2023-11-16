@@ -1,30 +1,22 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Axios from "axios";
 import * as yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Grid,
-  IconButton,
-  InputAdornment,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { useDispatch } from 'react-redux';
+import { addUser } from './redux/userSlice';
+import { Box, Button, Checkbox, FormControlLabel, Grid, IconButton, InputAdornment, TextField, Typography,} from "@mui/material";
 import { Formik } from "formik";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 function login() {
+  const dispatch = useDispatch();
   const noti = withReactContent(Swal);
   const [showPassword, setShowPassword] = React.useState(false);
-  const [terapeutas, setterapeutas] = useState({});
+  const [terapeutas, setterapeutas] = useState([]);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
@@ -40,11 +32,11 @@ function login() {
       password: values.password,
     }).then((response) => {
       if(response.data.length===1){
-        setterapeutas(response.data[0]);
+        dispatch(addUser(response.data))
         Swal.fire({
           icon: 'success',
           title: 'Acceso exitoso',
-          text: 'Bienvenido ' + terapeutas.app,
+          text: 'Bienvenido ',
           timer: 2000,
         })
       }else{
