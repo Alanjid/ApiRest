@@ -11,12 +11,13 @@ import { addUser } from './redux/userSlice';
 import { Box, Button, Checkbox, FormControlLabel, Grid, IconButton, InputAdornment, TextField, Typography,} from "@mui/material";
 import { Formik } from "formik";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import Header from './components/Header'
 
 function login() {
   const dispatch = useDispatch();
   const noti = withReactContent(Swal);
   const [showPassword, setShowPassword] = React.useState(false);
-  const [terapeutas, setterapeutas] = useState([]);
+  const [terapeutas, setterapeutas] = useState({});
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
@@ -32,13 +33,22 @@ function login() {
       password: values.password,
     }).then((response) => {
       if(response.data.length===1){
-        dispatch(addUser(response.data))
-        Swal.fire({
-          icon: 'success',
-          title: 'Acceso exitoso',
-          text: 'Bienvenido ',
-          timer: 2000,
-        })
+        if(response.data[0].isactive === 1){
+          dispatch(addUser(response.data[0]))
+          Swal.fire({
+            icon: 'success',
+            title: 'Acceso exitoso',
+            text: 'Bienvenido ',
+            timer: 2000,
+          })
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Tu cuenta esta inactiva',
+            text: 'Contacta con el administrador para resolver este problema',
+            timer: 2000,
+          })
+        }
       }else{
         Swal.fire({
           icon: 'error',
@@ -60,6 +70,7 @@ function login() {
 
   return (
     <div className="container-fluid" style={{ background: "#fbfbfb" }}>
+      <Header/>
       <div className="row">
         <div className="col-md-6 px-0 d-none d-md-block">
           <div className="d-flex" style={{height:'100vh',minHeight:'100%'}}>
