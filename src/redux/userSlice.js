@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const currentToken = localStorage.getItem('token')
 const currentEmail = localStorage.getItem('email')
 const currentUser = localStorage.getItem('user')
 const currentApp = localStorage.getItem('app')
@@ -8,12 +9,13 @@ const currentRol = localStorage.getItem('rol')
 const currentInstitucion = localStorage.getItem('institucion')
 
 const initialState= {
-    correo: currentEmail ? currentEmail : '',
-    nombre: currentUser ? currentUser : '',
-    app: currentApp ? currentApp : '',
-    apm: currentApm ? currentApm : '',
-    rol: currentRol ? currentRol : '',
-    idinstitucion: currentInstitucion ? currentInstitucion : '',
+    token: currentToken ? currentToken : null,
+    correo: currentEmail ? currentEmail : null,
+    nombre: currentUser ? currentUser : null,
+    app: currentApp ? currentApp : null,
+    apm: currentApm ? currentApm : null,
+    rol: currentRol ? currentRol : null,
+    idinstitucion: currentInstitucion ? currentInstitucion : null,
 }
 
 
@@ -22,13 +24,15 @@ export const userSlice = createSlice ({
     initialState,
     reducers: {
         addUser: (state, action) => {
-            const {correo, nombre, app, apm, rol, idinstitucion} = action.payload;
+            const {correo, nombre, app, apm, rol, idinstitucion, token} = action.payload;
+            state.token = token;
             state.correo = correo;
             state.nombre = nombre;
             state.app = app;
             state.apm = apm;
             state.rol = rol;
             state.idinstitucion = idinstitucion;
+            localStorage.setItem('token', token)
             localStorage.setItem('email', correo)
             localStorage.setItem('user', nombre)
             localStorage.setItem('app', app)
@@ -40,12 +44,14 @@ export const userSlice = createSlice ({
             state.correo = action.payload
         },
         killSession: (state, action) => {
-            state.correo = '';
-            state.nombre = '';
-            state.app = '';
-            state.apm = '';
-            state.rol = '';
-            state.idinstitucion = '';
+            state.token = null;
+            state.correo = null;
+            state.nombre = null;
+            state.app = null;
+            state.apm = null;
+            state.rol = null;
+            state.idinstitucion = null;
+            localStorage.removeItem('token')
             localStorage.removeItem('email')
             localStorage.removeItem('user')
             localStorage.removeItem('app')

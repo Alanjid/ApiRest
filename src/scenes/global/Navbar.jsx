@@ -124,6 +124,10 @@ const Navbar = () => {
     const colorMode = useContext(ColorModeContext);
     const [state, setState] = useState(false);
     const isMobile = useMediaQuery("(max-width:767px)");
+    const dispatch = useDispatch();
+    const destroySession = () => {
+      dispatch(killSession())
+    };
     return (
       <Box display="flex" justifyContent="space-between" p={1} sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>
         <Box display='flex' columnGap='10px'>
@@ -175,7 +179,7 @@ const Navbar = () => {
             <NavbarItem icon={<AccountCircleIcon />} text='Mi Cuenta' link='/cuenta' />
             {/* END Item */}
             {/* Item */}
-            <NavbarItem icon={<LogoutIcon />} text='Cerrar Sesión' link='' />
+            <NavbarItem icon={<LogoutIcon />} text='Cerrar Sesión' Click={destroySession} />
             {/* END Item */}                    
           </List>
           </Drawer>
@@ -188,11 +192,11 @@ const Navbar = () => {
     );
   };
   
-  const NavbarItem = ({icon,text,link}) => {
+  const NavbarItem = ({icon,text,link, Click}) => {
     return(
       <>    
       <ListItem disablePadding >              
-      <ListItemButton component={Link} to={link}>
+      <ListItemButton component={Link} to={link} onClick={Click}>
         <ListItemIcon sx={{minWidth:'40px'}}>
           {icon}
         </ListItemIcon>

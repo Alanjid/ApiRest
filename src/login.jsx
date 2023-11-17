@@ -30,10 +30,11 @@ function login() {
     Axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
       email: values.email,
       password: values.password,
+      recordarme: values.recordarme,
     }).then((response) => {
-      if(response.data.length===1){
-        if(response.data[0].isactive === 1){
-          dispatch(addUser(response.data[0]))
+      if(response.data.token){
+        if(response.data.isactive === 1){
+          dispatch(addUser(response.data))
           Swal.fire({
             icon: 'success',
             title: 'Acceso exitoso',
@@ -55,7 +56,6 @@ function login() {
           text: 'Revisa que tus datos sean correctos',
           timer: 2000,
         })
-        console.log("Error");
       }
     }).catch(function(error){
       Swal.fire({
