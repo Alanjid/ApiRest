@@ -34,6 +34,9 @@ import Paciente from './scenes/paciente';
 import Cuenta from './scenes/cuenta';
 import ActividadesRealizadas from './scenes/actividades_realizadas';
 import Añadirobservaciones from './scenes/Añadirobservaciones';
+import requireLogin from './api/requireLogin.js';
+import { useSelector } from "react-redux"
+import { selectCurrentToken } from "./redux/userSlice.js"
 
  const router = createBrowserRouter([
   {
@@ -119,6 +122,10 @@ import Añadirobservaciones from './scenes/Añadirobservaciones';
 ]) 
 
 function App(){
+  const token = useSelector(selectCurrentToken)
+  useEffect(() => {
+    requireLogin(token)
+  })
 
   return(
     <>

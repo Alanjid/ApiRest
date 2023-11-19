@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const currentToken = localStorage.getItem('token')
 const currentEmail = localStorage.getItem('email')
 const currentUser = localStorage.getItem('user')
@@ -64,3 +65,6 @@ export const userSlice = createSlice ({
 
 export const {addUser, changeEmail, killSession} = userSlice.actions;
 export default userSlice.reducer;
+
+
+export const selectCurrentToken = (state) => state.user
