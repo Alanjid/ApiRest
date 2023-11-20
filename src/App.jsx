@@ -5,15 +5,13 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
 import { ColorModeContext, useMode } from './theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { Routes } from 'react-router-dom';
 import Topbar from './scenes/global/Topbar'
 import Sidebar from './scenes/global/Sidebar'
 import Dashboard from './scenes/dashboard'
 import Observaciones from './scenes/observaciones'
-
+import Layout from './components/Layout/Layout'
 import Login from "./login";
 import Index from "./index";
 import Registro from "./registro";
@@ -35,8 +33,8 @@ import Cuenta from './scenes/cuenta';
 import ActividadesRealizadas from './scenes/actividades_realizadas';
 import Añadirobservaciones from './scenes/Añadirobservaciones';
 import requireLogin from './api/requireLogin.js';
-import { useSelector } from "react-redux"
-import { selectCurrentToken } from "./redux/userSlice.js"
+import { useSelector, useDispatch } from "react-redux"
+import { selectCurrentToken, killSession } from "./redux/userSlice.js"
 
  const router = createBrowserRouter([
   {
@@ -119,17 +117,24 @@ import { selectCurrentToken } from "./redux/userSlice.js"
     path:"*",
     element: <Error/>,
   },
-]) 
+])
 
 function App(){
   const token = useSelector(selectCurrentToken)
+  const dispatch = useDispatch();
   useEffect(() => {
     requireLogin(token)
+    .then((response) =>{
+      if(!response){
+        console.log(response)
+        dispatch(killSession())
+      }
+    })
   })
 
   return(
     <>
-      <RouterProvider router={router} />  
+      <RouterProvider router={router} />
     </>
   )
 }

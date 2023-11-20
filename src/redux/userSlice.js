@@ -7,7 +7,7 @@ const currentUser = localStorage.getItem('user')
 const currentApp = localStorage.getItem('app')
 const currentApm = localStorage.getItem('apm')
 const currentRol = localStorage.getItem('rol')
-const currentInstitucion = localStorage.getItem('institucion')
+const currentInstitucion = localStorage.getItem('idinstitucion')
 
 const initialState= {
     token: currentToken ? currentToken : null,
@@ -39,7 +39,7 @@ export const userSlice = createSlice ({
             localStorage.setItem('app', app)
             localStorage.setItem('apm', apm)
             localStorage.setItem('rol', rol)
-            localStorage.setItem('institucion', idinstitucion)
+            localStorage.setItem('idinstitucion', idinstitucion)
         },
         changeEmail: (state, action) => {
             state.correo = action.payload
@@ -58,7 +58,7 @@ export const userSlice = createSlice ({
             localStorage.removeItem('app')
             localStorage.removeItem('apm')
             localStorage.removeItem('rol')
-            localStorage.removeItem('institucion')
+            localStorage.removeItem('idinstitucion')
         }
     }
 })
