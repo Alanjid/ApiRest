@@ -11,9 +11,12 @@ import { addUser } from './redux/userSlice';
 import { Box, Button, Checkbox, FormControlLabel, Grid, IconButton, InputAdornment, TextField, Typography,} from "@mui/material";
 import { Formik } from "formik";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useNavigate } from 'react-router-dom'
+
 
 function login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const noti = withReactContent(Swal);
   const [showPassword, setShowPassword] = React.useState(false);
   const [terapeutas, setterapeutas] = useState({});
@@ -26,8 +29,8 @@ function login() {
   const [Nombre, setNombre] = useState("");
   const [Pass, setPass] = useState("");
 
-  const publicar = (values) => {
-    Axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
+  const publicar = async (values) => {
+    await Axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
       email: values.email,
       password: values.password,
       recordarme: values.recordarme,
@@ -41,6 +44,7 @@ function login() {
             text: 'Bienvenido ',
             timer: 2000,
           })
+          navigate('/')
         }else{
           Swal.fire({
             icon: 'error',
@@ -152,7 +156,6 @@ function login() {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        
                         sx={{ mt: 3, mb: 2 }}
                       >
                         Iniciar sesión

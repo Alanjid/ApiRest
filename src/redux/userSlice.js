@@ -67,4 +67,5 @@ export const {addUser, changeEmail, killSession} = userSlice.actions;
 export default userSlice.reducer;
 
 
-export const selectCurrentToken = (state) => state.user
+export const selectCurrentInfo = (state) => state.user
+export const selectCurrentToken = (state) => state.user.token
