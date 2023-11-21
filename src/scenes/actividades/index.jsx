@@ -26,6 +26,8 @@ import imagen_alimentos from '../../assets/alimento.png'
 import imagen_bebidas from '../../assets/bebidas.png'
 import imagen_partes_cuerpo from '../../assets/partes del cuerpo.png'
 import imagen_prendas from '../../assets/prendas.png'
+import imagen_acciones from '../../assets/acciones.png'
+import imagen_matematicas from '../../assets/matematicas.png'
 
 
 const Card_actividad = ({titulo,imagen}) =>{
@@ -75,10 +77,10 @@ const Actividades = () => {
                 
                 <Card_actividad titulo='Alimentos' imagen={imagen_alimentos}/>
                 <Card_actividad titulo='Bebidas' imagen={imagen_bebidas}/>
-                <Card_actividad titulo='Acciones' imagen={imagen_alimentos}/>
+                <Card_actividad titulo='Acciones' imagen={imagen_acciones}/>
                 <Card_actividad titulo='Partes del cuerpo' imagen={imagen_partes_cuerpo}/>
                 <Card_actividad titulo='Prendas de vestir' imagen={imagen_prendas}/>
-                <Card_actividad titulo='Matemáticas' imagen={imagen_prendas}/>
+                <Card_actividad titulo='Matemáticas' imagen={imagen_matematicas}/>
                 
 
                {/*  <Card sx={{ maxWidth: 345 }}>
