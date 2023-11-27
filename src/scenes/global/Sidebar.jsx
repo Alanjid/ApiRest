@@ -16,6 +16,7 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import tea from '../../images/logo 1.png'
 import avatar1 from '../../assets/avatar1.jpg'
+import { useSelector } from "react-redux"
 
 
 const handleSelectedItem = (title, setSelected) =>{
@@ -51,7 +52,7 @@ const Sidebar = ({toggled,setToggled}) => {
   const [isCollapsed, setIsCollapsed] = useState(localStorage.getItem("sidebar_collapsed") === "true");
   const [selected, setSelected] = useState("");
   const isMobile = useMediaQuery("(max-width:768px)");
-
+  const [paciente,setPaciente] = useState('')
   const sidebarMobile = useMediaQuery("(max-width:768px)");
 
   
@@ -61,10 +62,13 @@ const Sidebar = ({toggled,setToggled}) => {
 
   pathname = pathname.split('/')
   console.log(pathname[1])
-
+  const nombre_paciente =useSelector(state=>state.paciente.nombre)
+  console.log(nombre_paciente)
   useEffect(() => {
     const collapsedValue = localStorage.getItem("sidebar_collapsed");
     setIsCollapsed(collapsedValue === "true");
+    
+
   }, [])
 
   function handleSetIsCollapsed(value) {
@@ -219,7 +223,7 @@ const Sidebar = ({toggled,setToggled}) => {
             (
               <>
                <Item
-              title="Lizeth"
+              title={nombre_paciente}
               to="/paciente"
               icon={<PersonOutlineOutlinedIcon />}
               selected={selected}

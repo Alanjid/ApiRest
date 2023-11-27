@@ -8,6 +8,12 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { useSelector } from "react-redux"
+import { getPaciente } from '../../api/pacientes/getPacientes';
+import { useEffect } from "react"
+import { useDispatch } from 'react-redux';
+import { setNombre } from '../../redux/pacienteSlice';
+import { useState } from 'react';
 
 const currencies = [
   {
@@ -38,19 +44,43 @@ const localidades = [
     label: 'CRIT – Baja California Sur',
   },
 ];
+const format_data = ([data]) =>{
+  console.log(data)
+  
+  return {...data,fecha: new Intl.DateTimeFormat('es').format(new Date(data.fecha))}
 
+}
 const formulario = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
     const [value, setValue] = React.useState(dayjs('2023-06-19'));
+    const [paciente,setPaciente] = React.useState(initialValues)
     const handleFormSubmit = (values) => {
         console.log(values);
-
     };
+    const paciente_karnet = useSelector((state)=>state.paciente.karnet)
+    const dispatch = useDispatch()
+    useEffect(() =>{
+      const getData = async ()=>{
+      try {
+          const response = await getPaciente(paciente_karnet)
+          const data = response
+          console.log(data)
+          setPaciente(format_data(data))          
+          setValue(dayjs(data[0].fecha))
+          dispatch(setNombre(data[0].nombre))
+          console.log(paciente)   
+        } catch (error) {
+          console.error(error)
+        }
+      }
+      getData()
+      },[])
   return (
     <Box >
       <Formik
         onSubmit={handleFormSubmit}
-        initialValues={initialValues}
+        initialValues={paciente}
+        enableReinitialize={true}
         validationSchema={checkoutSchema}
       >
         {({
@@ -77,7 +107,7 @@ const formulario = () => {
                 label="Numero de folio"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.folio}
+                value={values.karnet}
                 name="folio"
                 InputProps={{
                   readOnly: true,
@@ -105,7 +135,7 @@ const formulario = () => {
                 label="Apellido paterno"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.nombre}
+                value={values.app}
                 name="apellidoP"
                 /* InputProps={{
                   readOnly: true,
@@ -119,7 +149,7 @@ const formulario = () => {
                 label="Apellido materno"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.nombre}
+                value={values.apm}
                 name="apellidoM"
                 /* InputProps={{
                   readOnly: true,
@@ -172,12 +202,12 @@ const formulario = () => {
               </TextField>              
                <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={[ 'DatePicker']} sx={{gridColumn: "span 4"}}>
-                  <DatePicker
+                  <DatePicker                    
                     format='DD-MM-YYYY'
-                    label="Fecha De Nacimiento"
+                    label="Fecha De Nacimiento"                    
                     value={value}
                     /* readOnly='true' */
-                    onChange={(newValue) => setValue(newValue)}
+                    /* onChange={(newValue) => setValue(newValue)} */
                     sx={{width: '100%'}}
                   />
                 </DemoContainer>
@@ -209,9 +239,12 @@ const checkoutSchema = yup.object().shape({
   inicio: yup.string().required("required"),
 });
 const initialValues = {
-  folio: "",
-  nombre: "",
-  inicio: "",  
+  karnet: "",
+  nombre: '',
+  inicio: "", 
+  app:'' ,
+  apm:''  
+
 };
 
 export default formulario;
