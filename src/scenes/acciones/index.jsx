@@ -3,14 +3,6 @@ import Header from "../../components/header/Header"
 import { Box, Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material"
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
 import { Link } from 'react-router-dom';
 
 function index() {

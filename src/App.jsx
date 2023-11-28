@@ -33,6 +33,7 @@ import requireLogin from './api/requireLogin.js';
 import { useSelector, useDispatch } from "react-redux"
 import { selectCurrentInfo, killSession } from "./redux/userSlice.js"
 
+
 function App(){
   const token = useSelector(selectCurrentInfo)
   const dispatch = useDispatch();
@@ -79,7 +80,3 @@ function App(){
 }
 
 export default App
-
-{/* <>
-      <RouterProvider router={router} />
-    </> */}

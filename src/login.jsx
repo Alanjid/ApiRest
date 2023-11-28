@@ -38,7 +38,7 @@ function login() {
       if(response.data.token){
         if(response.data.isactive === 1){
           dispatch(addUser(response.data))
-          Swal.fire({
+          noti.fire({
             icon: 'success',
             title: 'Acceso exitoso',
             text: 'Bienvenido ',
@@ -46,7 +46,7 @@ function login() {
           })
           navigate('/')
         }else{
-          Swal.fire({
+          noti.fire({
             icon: 'error',
             title: 'Tu cuenta esta inactiva',
             text: 'Contacta con el administrador para resolver este problema',
@@ -54,7 +54,7 @@ function login() {
           })
         }
       }else{
-        Swal.fire({
+        noti.fire({
           icon: 'error',
           title: 'Acceso denegado',
           text: 'Revisa que tus datos sean correctos',
@@ -62,7 +62,7 @@ function login() {
         })
       }
     }).catch(function(error){
-      Swal.fire({
+      noti.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'No se puede iniciar seción actualmente',
@@ -167,7 +167,6 @@ function login() {
                     </Box>
                   </form>
                 )}
-                {/* render props */}
               </Formik>
             </Box>
           </main>

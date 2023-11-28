@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useMediaQuery, useTheme} from "@mui/material";
@@ -16,6 +15,7 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import tea from '../../images/logo 1.png'
 import avatar1 from '../../assets/avatar1.jpg'
+import { useSelector } from "react-redux"
 
 
 const handleSelectedItem = (title, setSelected) =>{
@@ -51,7 +51,7 @@ const Sidebar = ({toggled,setToggled}) => {
   const [isCollapsed, setIsCollapsed] = useState(localStorage.getItem("sidebar_collapsed") === "true");
   const [selected, setSelected] = useState("");
   const isMobile = useMediaQuery("(max-width:768px)");
-
+  const [paciente,setPaciente] = useState('')
   const sidebarMobile = useMediaQuery("(max-width:768px)");
 
   
@@ -61,10 +61,13 @@ const Sidebar = ({toggled,setToggled}) => {
 
   pathname = pathname.split('/')
   console.log(pathname[1])
-
+  const nombre_paciente =useSelector(state=>state.paciente.nombre)
+  console.log(nombre_paciente)
   useEffect(() => {
     const collapsedValue = localStorage.getItem("sidebar_collapsed");
     setIsCollapsed(collapsedValue === "true");
+    
+
   }, [])
 
   function handleSetIsCollapsed(value) {
@@ -118,8 +121,6 @@ const Sidebar = ({toggled,setToggled}) => {
                 ml="15px"
               
               >
-            {/*     <Typography variant="h3" color={colors.grey[100]}>                  
-                </Typography> */}
                 <Box width='100%' justifyContent='start' alignItems='center' display='flex'>
                   <img style={{width:100}} src={tea} alt="MyTea" />
                 </Box>
@@ -219,7 +220,7 @@ const Sidebar = ({toggled,setToggled}) => {
             (
               <>
                <Item
-              title="Lizeth"
+              title={nombre_paciente}
               to="/paciente"
               icon={<PersonOutlineOutlinedIcon />}
               selected={selected}
@@ -256,41 +257,6 @@ const Sidebar = ({toggled,setToggled}) => {
               </>
             )
             }
-         {/*    <Item
-              title="Lizeth"
-              to="/paciente"
-              icon={<PersonOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Observaciones"
-              to="/paciente/observaciones"
-              icon={<EditNoteOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Actividades"
-              to="/paciente/actividades"
-              icon={<FormatListBulletedOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Tareas en casa"
-              to="/paciente/tareas"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />          
-            <Item
-              title="Avances"
-              to="/paciente/avances"
-              icon={<BarChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            /> */}
           </Box>
         </Menu>
       </ProSidebar>
