@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useMediaQuery, useTheme} from "@mui/material";
@@ -122,8 +121,6 @@ const Sidebar = ({toggled,setToggled}) => {
                 ml="15px"
               
               >
-            {/*     <Typography variant="h3" color={colors.grey[100]}>                  
-                </Typography> */}
                 <Box width='100%' justifyContent='start' alignItems='center' display='flex'>
                   <img style={{width:100}} src={tea} alt="MyTea" />
                 </Box>
@@ -260,41 +257,6 @@ const Sidebar = ({toggled,setToggled}) => {
               </>
             )
             }
-         {/*    <Item
-              title="Lizeth"
-              to="/paciente"
-              icon={<PersonOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Observaciones"
-              to="/paciente/observaciones"
-              icon={<EditNoteOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Actividades"
-              to="/paciente/actividades"
-              icon={<FormatListBulletedOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Tareas en casa"
-              to="/paciente/tareas"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />          
-            <Item
-              title="Avances"
-              to="/paciente/avances"
-              icon={<BarChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            /> */}
           </Box>
         </Menu>
       </ProSidebar>

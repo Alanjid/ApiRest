@@ -81,57 +81,6 @@ const Actividades = () => {
                 <Card_actividad titulo='Partes del cuerpo' imagen={imagen_partes_cuerpo}/>
                 <Card_actividad titulo='Prendas de vestir' imagen={imagen_prendas}/>
                 <Card_actividad titulo='Matemáticas' imagen={imagen_matematicas}/>
-                
-
-               {/*  <Card sx={{ maxWidth: 345 }}>
-                    <CardActionArea>
-                        <CardMedia
-                        component="img"
-                        height="200"
-                        image={imagen_alimentos}
-                        alt="green iguana"
-                        />
-                        <CardContent>
-                        <Typography  variant="h3" component="p">
-                            Alimentos
-                        </Typography>             
-                        </CardContent>
-                    </CardActionArea>
-                </Card> */}
-
-
-
-
-
-
-
-
-
-                    {/* <Card onClick={handleClickOpen} sx={{":hover":{cursor:'pointer'}}}>                        
-                        <CardContent>
-                            <Typography variant="h4">Alimentos</Typography>
-                        </CardContent>
-                    </Card>
-                    <Card onClick={handleClickOpen} sx={{":hover":{cursor:'pointer'}}}>
-                        <CardContent>
-                            <Typography variant="h4">Bebidas</Typography>
-                        </CardContent>
-                    </Card>
-                    <Card onClick={handleClickOpen} sx={{":hover":{cursor:'pointer'}}}>
-                        <CardContent>
-                            <Typography variant="h4">Acciones</Typography>
-                        </CardContent>
-                    </Card>
-                    <Card onClick={handleClickOpen} sx={{":hover":{cursor:'pointer'}}}>
-                        <CardContent>
-                            <Typography variant="h4">Partes del cuerpo</Typography>
-                        </CardContent>
-                    </Card>
-                    <Card onClick={handleClickOpen} sx={{":hover":{cursor:'pointer'}}}>
-                        <CardContent>
-                            <Typography variant="h4">Prendas de vestir</Typography>
-                        </CardContent>
-                    </Card> */}
                 </Box>
             </Box>
             {/* Modal */}

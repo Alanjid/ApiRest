@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useMediaQuery, useTheme} from "@mui/material";
@@ -52,10 +51,6 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(localStorage.getItem("sidebar_collapsed") === "true");
   const [selected, setSelected] = useState("");
   const isMobile = useMediaQuery("(max-width:767px)");
-  
-  //console.log(typeof isCollapsed)
-  //const location = useLocation()
-  //console.log('location', location)
 
   useEffect(() => {
     const collapsedValue = localStorage.getItem("sidebar_collapsed");
@@ -119,34 +114,7 @@ const Sidebar = () => {
               </Box>
             )}
           </MenuItem>
-          {/* User */}
-        {/*   {!isCollapsed && (
-            <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
-                <img
-                  alt="profile-user"
-                  width="100px"
-                  height="100px"
-                  src={avatar1}
-
-                  style={{ cursor: "pointer", borderRadius: "50%", objectFit:'cover' }}
-                />
-              </Box>
-              <Box textAlign="center">
-                <Typography
-                  variant="h2"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}
-                >
-                  Lizeth
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Paciente
-                </Typography>
-              </Box>
-            </Box>
-          )}  */}   
+          {/* User */} 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
           {/* movil */}
           {isMobile && (
@@ -203,14 +171,6 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-{/* 
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Data
-            </Typography> */}
             <Item
               title="Acciones"
               to="/actividades/acciones"
@@ -225,36 +185,6 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />          
-
-{/*             <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Pages
-            </Typography> */}
-   {/*          <Item
-              title="Avances"
-              to="/form"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />            
-            <Item
-              title="FAQ Page"
-              to="/faq"
-              icon={<HelpOutlineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            /> */}
-
-            {/* <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Charts
-            </Typography> */}
             <Item
               title="Prendas de vestir"
               to="/actividades/prendas"

@@ -5,25 +5,15 @@ import { useState,useEffect } from 'react'
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import {
-  GridRowModes,
   DataGrid,
   GridToolbar,
-  GridToolbarContainer,
-  GridActionsCellItem,
-  GridRowEditStopReasons,
   esES
 } from '@mui/x-data-grid';
-import { Box, Hidden, Link, Paper } from '@mui/material';
-import { disConnect } from 'echarts';
-import { DisabledByDefault, Satellite } from '@mui/icons-material';
+import { Box, Paper } from '@mui/material';
 import { fetchData } from './api/pacientes/getPacientes';
 import { useSelector, useDispatch } from 'react-redux';
 import { addPaciente } from './redux/pacienteSlice';
 import { useNavigate } from 'react-router-dom';
-/* const handleClick = (event, cellValues) => {
-  console.log(cellValues.row);
-}; */
-//const data = fetchData()
 
 const handleClick = (karnet,dispatch,navigate)=>{
  
@@ -64,10 +54,6 @@ const columns = [
           variant="contained"
           color="primary"
           onClick={(event)=>{handleClick(karnet,dispatch,navigate)}}
-          /* onClick={(event) => {
-            handleClick(event, cellValues);
-          }} */
-          /* href='/paciente' */
           style={{height: '70%'}}
         >
           Ver más
@@ -137,20 +123,6 @@ function index() {
             slots={{
               toolbar: GridToolbar,
             }}
-            /* localeText={{
-              toolbarDensity: 'Tamaño',
-              toolbarDensityLabel: 'Tamaño',
-              toolbarDensityCompact: 'Pequeñas',
-              toolbarDensityStandard: 'Medianas',
-              toolbarDensityComfortable: 'Grandes',
-              toolbarColumns: 'Columnas',
-              toolbarColumnsLabel: 'Columnas',
-              toolbarFilters: 'Filtrar',
-              toolbarFiltersLabel: 'Filtrar',
-              toolbarExport: 'Exportar',
-              toolbarExportLabel: 'Exportar',
-              toolbarExportCSV: "Excel",
-            }} */
             localeText={esES.components.MuiDataGrid.defaultProps.localeText}
             sx={{
               '.MuiTablePagination-selectLabel, .MuiTablePagination-displayedRows':{
