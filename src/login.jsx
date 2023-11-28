@@ -170,34 +170,6 @@ function login() {
                 {/* render props */}
               </Formik>
             </Box>
-
-            {/*  <div className="form-floating salto">
-                      <input type="text" onChange={(event)=>{
-                        setNombre(event.target.value);
-                        }}
-                        className="form-control" value={Nombre} placeholder="Correo"/>
-                      <label for="user">USUARIO</label>
-                    </div>
-                    <div className="form-floating">
-                      <input type="password" onChange={(event)=>{
-                        setPass(event.target.value);
-                        }} 
-                        className="form-control" value={Pass} placeholder="Contraseña"/>
-                      <label for="pass">CONTRASEÑA</label>
-                    </div> */}
-            {/*  <div className="form-check form-switch salto">
-                      <input className="form-check-input" name="duradera" type="checkbox" role="switch" id="duradera"/>
-                      <label className="form-check-label" for="duradera">Mantener sesión iniciada</label>
-                    </div> */}
-
-            {/*    <a href="/" type="button" className="w-100 btn btn-lg btn-primary">INICIAR</a> */}
-
-            {/*  <p className="salto"></p> */}
-
-            {/*  <a href="/registrate" type="button" className="w-100 btn btn-lg btn-bd-primary">Registrarse</a>
-                  <p className="salto"></p>
-                  <p className="sinsalto">¿Olvidaste tu contraseña?</p>
-                  <a href="#">Recupérala aquí</a> */}
           </main>
         </div>
       </div>

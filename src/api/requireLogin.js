@@ -20,19 +20,6 @@ const requireLogin = async (token) => {
     console.log('api: ' + error);
     throw { data: error };
   }
-    /* Axios.post(`${import.meta.env.VITE_BACKEND_URL}/user`, {
-        token: token.token,
-        correo: token.correo,
-        nombre: token.nombre,
-        app: token.app,
-        apm: token.apm,
-        rol: token.rol,
-        idinstitucion: token.idinstitucion,
-      }).then((response) => {
-        bandera = response.data;
-      }).catch(function(error){
-        console.log(error)
-      }); */
 }
 
 export default requireLogin
