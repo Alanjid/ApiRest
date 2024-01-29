@@ -104,14 +104,7 @@ const Topbar = ({toggled,setToggled}) => {
       <Box display="flex" alignItems='center' justifyContent={isMobile ? "space-between" :"end"} p='10px' sx={{backgroundColor: colors.primary[400],boxShadow:'6px 3px 23px 0px rgba(204,204,204,0.41)'}}>        
         
         {/* ICONS */}
-       
-          {!isMobile &&(
-          <>
-            <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">IMÁGENES</button></a>
-            <a href='/' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">PACIENTES</button></a>
-            <a href='/actividades' style={{marginRight: '1.5em'}}><button type="button" className="btn btn-outline-primary me-3">ACTIVIDADES</button></a>
-          </>
-          )}
+    
          {isMobile && (
           <IconButton onClick={() => setToggled(!toggled)}>
             <MenuOutlinedIcon />

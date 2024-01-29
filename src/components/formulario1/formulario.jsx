@@ -1,21 +1,43 @@
-import React from 'react'
+import * as React from 'react'
 import { Box, Button, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { getTerapeuta } from "../../api/terapeuta" 
+import { useEffect } from "react"
+
 
 const formulario = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
+    const [terapeuta,setTerapeuta] = React.useState(initialValues)
 
     const handleFormSubmit = (values) => {
         console.log(values);
 
     };
+
+    useEffect(()=>{
+      //Obtener los datos del terapeuta
+      const getData = async ()=>{
+          try {
+            const response = await getTerapeuta()
+            const data = await response
+            setTerapeuta({...data,localidad: "Morelia, Michoacan"})            
+            console.log(terapeuta)       
+
+          } catch (error) {
+            console.error(error)        
+          }
+      } 
+      getData()    
+    },[])
+
   return (
     <Box>
       <Formik
         onSubmit={handleFormSubmit}
-        initialValues={initialValues}
+        initialValues={terapeuta}
+        enableReinitialize={true}
         validationSchema={checkoutSchema}
       >
         {({
@@ -27,6 +49,7 @@ const formulario = () => {
           handleSubmit,
         }) => (
           <form onSubmit={handleSubmit}>
+            {console.log("Values:", values)}
             <Box
               display="grid"
               gap="30px"
@@ -42,11 +65,14 @@ const formulario = () => {
                 label="Correo electronico"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.email}
+                value={values.correo}
                 name="email"
-                error={!!touched.email && !!errors.email}
-                helperText={touched.email && errors.email}
+                /* error={!!touched.email && !!errors.email}
+                helperText={touched.email && errors.email} */
                 sx={{ gridColumn: "span 4" }}
+                InputProps={{
+                  readOnly: true,
+                }}
               />
               <TextField
                 fullWidth
@@ -55,11 +81,14 @@ const formulario = () => {
                 label="Nombre"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.nombre}
+                value={`${values.nombre} ${values.app} ${values.apm}`}
                 name="nombre"
                 error={!!touched.nombre && !!errors.nombre}
                 helperText={touched.nombre && errors.nombre}
                 sx={{ gridColumn: "span 4" }}
+                InputProps={{
+                  readOnly: true,
+                }}
               />
               <TextField
                 fullWidth
@@ -73,6 +102,10 @@ const formulario = () => {
                 error={!!touched.pass && !!errors.pass}
                 helperText={touched.pass && errors.pass}
                 sx={{ gridColumn: "span 4" }}
+                InputProps={{
+                  readOnly: true,
+                }}
+                
               />
               
               <TextField
@@ -83,8 +116,7 @@ const formulario = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.localidad}
-                name="localidad"
-                disabled="true"
+                name="localidad"                
                 error={!!touched.localidad && !!errors.localidad}
                 helperText={touched.localidad && errors.localidad}
                 sx={{ gridColumn: "span 4" }}
@@ -115,11 +147,14 @@ const checkoutSchema = yup.object().shape({
   pass: yup.string().matches(password, "Contraseña Invalida").required("required"),
   localidad: yup.string().required("required"),
 });
+
 const initialValues = {
-  email: "",
-  nombre: "",
-  pass: "",
-  localidad: "Morelia, Michoacan",  
+  correo: "",
+  nombre: '',  
+  app:'' ,
+  apm:'',  
+  localidad: "Morelia, Michoacan", 
+
 };
 
-export default formulario;
+export default formulario

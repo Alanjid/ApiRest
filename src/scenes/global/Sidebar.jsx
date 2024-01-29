@@ -135,9 +135,8 @@ const Sidebar = ({toggled,setToggled}) => {
           </MenuItem>
         
           <Box>
-          {/* movil */}
-          {isMobile && (
-            <>
+        
+          
           <Typography
               variant="h6"
               color={colors.grey[300]}
@@ -145,7 +144,7 @@ const Sidebar = ({toggled,setToggled}) => {
             >
               Paginas
             </Typography>
-          <Item
+            <Item
               title="Pacientes"
               to="/"
               icon={<PeopleAltIcon />}
@@ -166,19 +165,13 @@ const Sidebar = ({toggled,setToggled}) => {
               selected={selected}
               setSelected={setSelected}
             />
-          <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Paciente
-            </Typography>
-            </>
-            )}
+          
+            
           {/* END movil */}
 
             {/* Items detalles paciente */}
-            {pathname[1]=='actividades' ? (<>
+            {pathname[1]=='actividades' && (
+            <>
               <Item
               title="Alimentos"
               to="/actividades"
@@ -216,9 +209,18 @@ const Sidebar = ({toggled,setToggled}) => {
               setSelected={setSelected}
             />
             </>
-            ) :
+            )} 
+            
+            {!['cuenta','actividades'].includes(pathname[1]) && 
             (
               <>
+            <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Paciente
+            </Typography>
                <Item
               title={nombre_paciente}
               to="/paciente"
