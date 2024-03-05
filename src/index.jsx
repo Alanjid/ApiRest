@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles.css'
 import { useState,useEffect } from 'react'
 import * as React from 'react';
-import Button from '@mui/material/Button';
+import { Button, Switch, FormControlLabel  } from '@mui/material';
 import {
   DataGrid,
   GridToolbar,
@@ -14,6 +14,9 @@ import { fetchData } from './api/pacientes/getPacientes';
 import { useSelector, useDispatch } from 'react-redux';
 import { addPaciente } from './redux/pacienteSlice';
 import { useNavigate } from 'react-router-dom';
+import { selectCurrentRol } from './redux/userSlice';
+import { Carta } from './data/main';
+
 
 const handleClick = (karnet,dispatch,navigate)=>{
  
@@ -23,7 +26,7 @@ const handleClick = (karnet,dispatch,navigate)=>{
   navigate('/paciente')
 
 }
-const columns = [
+const columnsPacientes = [
   { field: 'karnet', headerName: 'Karnet', width: 70, align: 'center' },
   { field: 'nombre', headerName: 'Nombre', width: 220, minWidth: 150, maxWidth: 300, align: 'center',headerAlign: 'center', },
   { field: 'app', headerName: 'Apellido Paterno', width: 220, minWidth: 150, maxWidth: 300, align: 'center',headerAlign: 'center', },
@@ -63,17 +66,6 @@ const columns = [
   },
 ];
 
-const Carta = [
-  { id: 1, Apellidos: 'Snow', Nombre: 'Jon', Diagnostico: 3 , Activo: 'Activo', nacimiento: '17/07/2002'},
-  { id: 2, Apellidos: 'Lannister', Nombre: 'Cersei', Diagnostico: 1, Activo: 'Activo', nacimiento: '17/07/2002'},
-  { id: 3, Apellidos: 'Lannister', Nombre: 'Jaime', Diagnostico: 2, Activo: 'Activo', nacimiento: '17/07/2002'},
-  { id: 4, Apellidos: 'Stark', Nombre: 'Arya', Diagnostico: 1, Activo: 'Activo', nacimiento: '17/07/2002'},
-  { id: 5, Apellidos: 'Targaryen', Nombre: 'Daenerys', Diagnostico: 2, Activo: 'Activo', nacimiento: '17/07/2002'},
-  { id: 6, Apellidos: 'Melisandre', Nombre: null, Diagnostico: 1, Activo: 'Activo', nacimiento: '17/07/2002'},
-  { id: 7, Apellidos: 'Clifford', Nombre: 'Ferrara', Diagnostico: 1, Activo: 'Activo', nacimiento: '17/07/2002'},
-  { id: 8, Apellidos: 'Frances', Nombre: 'Rossini', Diagnostico: 1, Activo: 'Activo', nacimiento: '17/07/2002'},
-  { id: 9, Apellidos: 'Roxie', Nombre: 'Harvey', Diagnostico: 2, Activo: 'Activo', nacimiento: '17/07/2002'},
-]
 const format_data = (data) =>{  
   return data.map((item,index)=>{
     return {...item, id:index, fecha:new Intl.DateTimeFormat('es').format(new Date(item.fecha))}
@@ -81,13 +73,14 @@ const format_data = (data) =>{
 }
 
 function index() {
-  
+
+  const Admin = useSelector(selectCurrentRol)
   const [cartas, setCartas] = useState([])
   const [pacientes, setPacientes]=useState([])
   const correo_terapeuta = useSelector((state)=>state.user.correo)
+  const [bandera, setBandera] = useState(false);
+
   useEffect(()=>{
-    
-     
    const getData = async ()=>{
       try {
         const response = await fetchData(correo_terapeuta)
@@ -101,19 +94,23 @@ function index() {
     
     getData()
   },[])
+
   return (
     <div>
       <Navbar/>
       <Box display='flex' flexDirection='column' alignItems='center' mt='1rem'>
         <Box display='flex' alignItems='end' maxWidth='100%' flexDirection='column' rowGap='2rem'>
-        <button type="button" className="btn btn-primary botonañadir">Añadir Paciente
-          <img src="images/Plus.png" className='imagenañadir' height="20" alt="MyTEAPony Logo" loading="lazy"/>
-        </button>            
+          <Box display='flex' gap='3rem' justifyContent={{xs:'center',lg:'start'}} flexDirection='row' flexWrap='wrap'>
+            <FormControlLabel onChange={() => setBandera(!bandera)} control={<Switch />} label={bandera ? 'Pacientes' : 'Terapeutas'} />
+            <button type="button" className="btn btn-primary botonañadir">Añadir Paciente
+              <img src="images/Plus.png" className='imagenañadir' height="20" alt="MyTEAPony Logo" loading="lazy"/>
+            </button>    
+          </Box>        
           <Box component={Paper} elevation={0} width='100%'>
         
           <DataGrid 
             rows={pacientes}
-            columns={columns}
+            columns={columnsPacientes}
             initialState={{
               pagination: {
                 paginationModel: { page: 0, pageSize: 10},

@@ -77,7 +77,7 @@ function login() {
         <div className="col-md-6 px-0 d-none d-md-block">
           <div className="d-flex" style={{height:'100vh',minHeight:'100%'}}>
             <img
-              src="images/ImagenLogin.png"
+              src="images/ImagenLogin1.png"
               style={{ objectFit: "cover" }}
               alt="Login image"
               className="w-100 h-100"

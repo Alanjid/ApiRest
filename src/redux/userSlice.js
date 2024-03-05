@@ -69,3 +69,4 @@ export default userSlice.reducer;
 
 export const selectCurrentInfo = (state) => state.user
 export const selectCurrentToken = (state) => state.user.token
+export const selectCurrentRol = (state) => state.user.rol
