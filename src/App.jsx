@@ -1,37 +1,37 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import RequireAuth from '../../api/RequireAuth.jsx';
+import RequireAuth from './api/RequireAuth.jsx';
 import {
   Routes, Route
   /* createBrowserRouter,
   RouterProvider, */
 } from "react-router-dom";
-import Dashboard from '../dashboard/index.jsx'
-import Observaciones from '../observaciones/index.jsx'
-import Layout from '../../components/Layout/Layout.jsx'
-import Login from "../../login.jsx";
-import Index from "../../index";
-import Registro from "../../registro.jsx";
-import Terapeutas from "../../terapeutas.jsx";
+import Dashboard from './scenes/dashboard/index.jsx'
+import Observaciones from './scenes/observaciones/index.jsx'
+import Layout from './components/Layout/Layout.jsx'
+import Login from "./login.jsx";
+import Index from "./index";
+import Registro from "./registro.jsx";
+import Terapeutas from "./terapeutas.jsx";
 
-import Actividades from "../alimentos/index.jsx";
-import Bebidas from '../bebidas/index.jsx';
-import Acciones from '../acciones/index.jsx';
-import Cuerpo from '../cuerpo/index.jsx';
-import Prendas from '../prendas/index.jsx';
-import Edicion from '../EdicionActividades/index.jsx';
+import Actividades from "./scenes/alimentos/index.jsx";
+import Bebidas from './scenes/bebidas/index.jsx';
+import Acciones from './scenes/acciones/index.jsx';
+import Cuerpo from './scenes/cuerpo/index.jsx';
+import Prendas from './scenes/prendas/index.jsx';
+import Edicion from './scenes/EdicionActividades/index.jsx';
 
-import Error from "../../error.jsx";
-import PActividades from '../actividades/index.jsx';
-import Avances from '../avances/index.jsx';
-import Tareas from '../tareas/index.jsx';
-import Paciente from '../paciente/index.jsx';
-import Cuenta from '../cuenta/index.jsx';
-import ActividadesRealizadas from '../actividades_realizadas/index.jsx';
-import Añadirobservaciones from '../Añadirobservaciones/index.jsx';
-import requireLogin from '../../api/requireLogin.js';
+import Error from "./error.jsx";
+import PActividades from './scenes/actividades/index.jsx';
+import Avances from './scenes/avances/index.jsx';
+import Tareas from './scenes/tareas/index.jsx';
+import Paciente from './scenes/paciente/index.jsx';
+import Cuenta from './scenes/cuenta/index.jsx';
+import ActividadesRealizadas from './scenes/actividades_realizadas/index.jsx';
+import Añadirobservaciones from './scenes/Añadirobservaciones/index.jsx';
+import requireLogin from './api/requireLogin.js';
 import { useSelector, useDispatch } from "react-redux"
-import { selectCurrentInfo, killSession } from "../../redux/userSlice.js"
+import { selectCurrentInfo, killSession } from "./redux/userSlice.js"
 
 
 function App(){
