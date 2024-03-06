@@ -13,7 +13,7 @@ import { Box, Paper } from '@mui/material';
 import { fetchData } from './api/pacientes/getPacientes';
 import { useSelector, useDispatch } from 'react-redux';
 import { addPaciente } from './redux/pacienteSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { selectCurrentRol } from './redux/userSlice';
 import { Carta } from './data/main';
 
@@ -101,10 +101,24 @@ function index() {
       <Box display='flex' flexDirection='column' alignItems='center' mt='1rem'>
         <Box display='flex' alignItems='end' maxWidth='100%' flexDirection='column' rowGap='2rem'>
           <Box display='flex' gap='3rem' justifyContent={{xs:'center',lg:'start'}} flexDirection='row' flexWrap='wrap'>
-            <FormControlLabel onChange={() => setBandera(!bandera)} control={<Switch />} label={bandera ? 'Pacientes' : 'Terapeutas'} />
-            <button type="button" className="btn btn-primary botonañadir">Añadir Paciente
-              <img src="images/Plus.png" className='imagenañadir' height="20" alt="MyTEAPony Logo" loading="lazy"/>
-            </button>    
+            <FormControlLabel onChange={() => setBandera(!bandera)} control={<Switch />} label={bandera ? 'Terapeutas' : 'Pacientes'} />
+            { bandera ? 
+              <Link 
+                className="btn btn-primary botonañadir" 
+                style={{textDecoration: 'none', color: 'white'}}
+                to='añadirterapeuta'>
+                Añadir Terapeuta
+                <img src="images/Plus.png" className='imagenañadir' height="20" alt="MyTEAPony Logo" loading="lazy"/>
+              </Link>
+              :
+              <Link 
+                className="btn btn-primary botonañadir" 
+                style={{textDecoration: 'none', color: 'white'}}
+              >
+                Añadir Paciente
+                <img src="images/Plus.png" className='imagenañadir' height="20" alt="MyTEAPony Logo" loading="lazy"/>
+              </Link>              
+            }
           </Box>        
           <Box component={Paper} elevation={0} width='100%'>
         

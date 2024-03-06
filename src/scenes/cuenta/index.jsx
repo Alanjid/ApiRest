@@ -10,7 +10,7 @@ const Cuenta = () => {
         <Base>
             <Box m='20px' padding='20px'  sx={{background:'#fcfcfc'}}>
                 <Box display='flex' justifyContent='space-between' alignItems='center'>
-                    <Header title="Mi Cuenta"/>               
+                    <Header title="Mi Cuenta"/>
                 </Box>
                 <Form />
             </Box>

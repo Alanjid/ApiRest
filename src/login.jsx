@@ -162,7 +162,6 @@ function login() {
                       </Button>
                       <Box display={"flex"} justifyContent={'space-between'}>
                       <Typography variant="subtitle1" component='a' href="#" sx={{textDecoration:'none'}}>¿Olvidaste tu contraseña?</Typography>
-                      <Typography variant="subtitle1" component='a' href="#"  sx={{textDecoration:'none'}}>Registrarse</Typography>
                       </Box>
                     </Box>
                   </form>
