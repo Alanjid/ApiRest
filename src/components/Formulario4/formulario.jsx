@@ -3,13 +3,18 @@ import { Box, Button, TextField, InputAdornment, IconButton } from "@mui/materia
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { getTerapeuta } from "../../api/terapeuta" 
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from 'dayjs';
 import { useEffect } from "react"
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 
 const formulario = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
+    const [fecha, setFecha] = React.useState(dayjs('2023-06-19'));
     const [terapeuta,setTerapeuta] = React.useState(initialValues);
     const [showPassword1, setShowPassword1] = React.useState(false); // Estado para visibilidad de contraseña 1
     const [showPassword2, setShowPassword2] = React.useState(false); // Estado para visibilidad de contraseña 2
@@ -69,14 +74,14 @@ const formulario = () => {
               <TextField
                 fullWidth
                 variant="outlined"
-                type="email"
-                label="Correo electronico"
+                type="text"
+                label="Karnet"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.email}
-                name="email"
-                error={!!touched.email && !!errors.email}
-                helperText={touched.email && errors.email}
+                value={values.karnet}
+                name="karnet"
+                error={!!touched.karnet && !!errors.karnet}
+                helperText={touched.karnet && errors.karnet}
                 sx={{ gridColumn: "span 4" }}
               />
               <TextField
@@ -117,6 +122,20 @@ const formulario = () => {
                 error={!!touched.apm && !!errors.apm}
                 helperText={touched.apm && errors.apm}
                 sx={{ gridColumn: "span 2" }}
+              />
+
+              <TextField
+                fullWidth
+                variant="outlined"
+                type="text"
+                label="Nombre de usuario"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.username}
+                name="username"
+                error={!!touched.username && !!errors.username}
+                helperText={touched.username && errors.username}
+                sx={{ gridColumn: "span 4" }}
               />
 
               <TextField
@@ -170,6 +189,19 @@ const formulario = () => {
                 helperText={touched.comparacion && errors.comparacion}
                 sx={{ gridColumn: "span 2" }}
               />
+
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DemoContainer components={[ 'DatePicker']} sx={{gridColumn: "span 4"}}>
+                  <DatePicker                    
+                    format='DD-MM-YYYY'
+                    label="Fecha De Nacimiento"                    
+                    value={fecha}
+                    /* readOnly='true' */
+                    /* onChange={(newValue) => setValue(newValue)} */
+                    sx={{width: '100%'}}
+                  />
+                </DemoContainer>
+              </LocalizationProvider>
               
               <TextField
                 fullWidth
@@ -195,30 +227,25 @@ const formulario = () => {
       </Formik>
     </Box>
     );
-};
-
-const Tmail =
-  /^[a-z]{0,}\.[a-z]{0,}@teleton.org.mx$/;
-
-const password =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,16}$/;
-  
+};  
 
 const checkoutSchema = yup.object().shape({
-  email: yup.string().matches(Tmail, "Correo Invalido").required("required"),
+  karnet: yup.string().required("required"),
   nombre: yup.string().required("required"),
   app: yup.string().required("required"),
   apm: yup.string().required("required"),
-  password: yup.string().matches(password, "Contraseña Invalida").required("Campo requerido"),
+  username: yup.string().required("required"),
+  password: yup.string().required("Campo requerido"),
   comparacion: yup.string().oneOf([yup.ref('password'), null], 'Las contraseñas deben coincidir').required("Campo requerido"),
   localidad: yup.string().required("required"),
 });
 
 const initialValues = {
-  email: "",
+  karnet: "",
   nombre: "",  
   app:"",
   apm:"",
+  username:"",
   password:"",
   comparacion:"",
   localidad: "Morelia, Michoacan"

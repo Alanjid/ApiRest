@@ -106,7 +106,8 @@ function index() {
               <Link 
                 className="btn btn-primary botonañadir" 
                 style={{textDecoration: 'none', color: 'white'}}
-                to='añadirterapeuta'>
+                to='añadirterapeuta'
+                >
                 Añadir Terapeuta
                 <img src="images/Plus.png" className='imagenañadir' height="20" alt="MyTEAPony Logo" loading="lazy"/>
               </Link>
@@ -114,6 +115,7 @@ function index() {
               <Link 
                 className="btn btn-primary botonañadir" 
                 style={{textDecoration: 'none', color: 'white'}}
+                to='añadirpaciente'
               >
                 Añadir Paciente
                 <img src="images/Plus.png" className='imagenañadir' height="20" alt="MyTEAPony Logo" loading="lazy"/>
