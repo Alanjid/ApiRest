@@ -10,7 +10,7 @@ import {
   esES
 } from '@mui/x-data-grid';
 import { Box, Paper } from '@mui/material';
-import { fetchData } from './api/pacientes/getPacientes';
+import { fetchData, fetchTerapeutas} from './api/pacientes/getPacientes';
 import { useSelector, useDispatch } from 'react-redux';
 import { addPaciente } from './redux/pacienteSlice';
 import { useNavigate, Link } from 'react-router-dom';
@@ -65,6 +65,43 @@ const columnsPacientes = [
     }
   },
 ];
+const columnsTerapeutas = [
+  { field: 'correo', headerName: 'Correo', width: 220, align: 'center' },
+  { field: 'nombre', headerName: 'Nombre', width: 150, minWidth: 150, maxWidth: 300, align: 'center',headerAlign: 'center', },
+  { field: 'app', headerName: 'Apellido Paterno', width: 220, minWidth: 150, maxWidth: 300, align: 'center',headerAlign: 'center', },
+  { field: 'apm', headerName: 'Apellido Materno', width: 220, minWidth: 150, maxWidth: 200, align: 'center',headerAlign: 'center', },
+  { field: 'estado', headerName: 'Estado', width: 220, minWidth: 150, maxWidth: 200, align: 'center',headerAlign: 'center', },
+  {
+    field: 'Accion',
+    headerName: 'Acción',
+    width: 100,
+    minWidth: 150, 
+    maxWidth: 230,
+    cellClassName: 'actions',
+    align: 'center',
+    headerAlign: 'center',
+    renderCell: (cellValues) => {
+      const dispatch = useDispatch()
+      const navigate = useNavigate()
+      const correo = cellValues.row.correo
+      console.log(correo)
+      return (
+        <Button
+          variant="contained"
+          color="primary"
+          style={{height: '70%'}}
+        >
+          <Link 
+          style={{textDecoration: 'none', color: 'white'}}
+          to='añadirterapeuta1'
+          >
+            Ver Más
+          </Link>
+        </Button>
+      );
+    }
+  },
+];
 
 const format_data = (data) =>{  
   return data.map((item,index)=>{
@@ -72,23 +109,43 @@ const format_data = (data) =>{
   })
 }
 
+const format_data2 = (data) =>{  
+  return data.map((item,index)=>{
+    return {...item, id:index}
+  })
+}
+
 function index() {
 
   const Admin = useSelector(selectCurrentRol)
+  const [isAdmin, setIsAdmin] = useState(false);
   const [cartas, setCartas] = useState([])
   const [pacientes, setPacientes]=useState([])
+  const [terapeutas, setTerapeutas]=useState([])
   const correo_terapeuta = useSelector((state)=>state.user.correo)
   const [bandera, setBandera] = useState(false);
 
   useEffect(()=>{
    const getData = async ()=>{
+      if(Admin == 1){
+        setIsAdmin(true)
+        setBandera(true)
+      }
       try {
         const response = await fetchData(correo_terapeuta)
         const data = await response
-        console.log(data)        
+        console.log(data);
         setPacientes(format_data(data))
       } catch (error) {
         console.error(error)        
+      }
+      try {
+        const response2 = await fetchTerapeutas(correo_terapeuta)
+        const data2 = await response2
+        console.log(data2);
+        setTerapeutas(format_data2(data2))
+      } catch (error) {
+        console.error(error)
       }
     } 
     
@@ -101,7 +158,10 @@ function index() {
       <Box display='flex' flexDirection='column' alignItems='center' mt='1rem'>
         <Box display='flex' alignItems='end' maxWidth='100%' flexDirection='column' rowGap='2rem'>
           <Box display='flex' gap='3rem' justifyContent={{xs:'center',lg:'start'}} flexDirection='row' flexWrap='wrap'>
-            <FormControlLabel onChange={() => setBandera(!bandera)} control={<Switch />} label={bandera ? 'Terapeutas' : 'Pacientes'} />
+            { isAdmin ? 
+              <FormControlLabel onChange={() => setBandera(!bandera)} control={<Switch />} label={bandera ? 'Terapeutas' : 'Pacientes'} />:
+              ''
+            }
             { bandera ? 
               <Link 
                 className="btn btn-primary botonañadir" 
@@ -124,7 +184,29 @@ function index() {
           </Box>        
           <Box component={Paper} elevation={0} width='100%'>
         
-          <DataGrid 
+          { bandera ?
+            <DataGrid 
+            rows={terapeutas}
+            columns={columnsTerapeutas}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 10},
+              },
+            }}           
+            pageSizeOptions={[10, 50]}
+            slots={{
+              toolbar: GridToolbar,
+            }}
+            localeText={esES.components.MuiDataGrid.defaultProps.localeText}
+            sx={{
+              '.MuiTablePagination-selectLabel, .MuiTablePagination-displayedRows':{
+                margin:0
+              }
+
+            }}
+          />
+          :
+            <DataGrid 
             rows={pacientes}
             columns={columnsPacientes}
             initialState={{
@@ -144,6 +226,7 @@ function index() {
 
             }}
           />
+          }
           
           </Box>
         </Box>
