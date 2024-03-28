@@ -1,7 +1,6 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { selectCurrentToken } from "../redux/userSlice"
-import { useEffect } from "react"
+import { selectCurrentToken } from "../../redux/userSlice"
 
 const RequireAuth = () => {
     const token = useSelector(selectCurrentToken)
@@ -10,4 +9,5 @@ const RequireAuth = () => {
         token ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />
     )
 }
+
 export default RequireAuth

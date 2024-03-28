@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
-import RequireAuth from './api/RequireAuth.jsx';
+import RequireAuth from './api/Login/RequireAuth.jsx';
 import {
   Routes, Route
   /* createBrowserRouter,
@@ -31,22 +29,34 @@ import AñadirTerapeuta from './scenes/Añadir_Terapeuta/index.jsx';
 import AñadirPaciente from './scenes/Añadir_Paciente/index.jsx';
 import ActividadesRealizadas from './scenes/actividades_realizadas/index.jsx';
 import Añadirobservaciones from './scenes/Añadirobservaciones/index.jsx';
-import requireLogin from './api/requireLogin.js';
+import requireLogin from './api/Login/requireLogin.js';
 import { useSelector, useDispatch } from "react-redux"
 import { selectCurrentInfo, killSession } from "./redux/userSlice.js"
+import { useEffect } from 'react';
 
 
 function App(){
   const token = useSelector(selectCurrentInfo)
   const dispatch = useDispatch();
   useEffect(() => {
-    requireLogin(token)
-    .then((response) =>{
-      if(!response){
-        dispatch(killSession())
-      }
-    })
-  })
+    const fetchData = async () => {
+        if (token.token && token.rol) {
+            try {
+                const response = await requireLogin(token);
+                console.log(response);
+                if(!response){
+                  dispatch(killSession());
+                }
+            } catch (error) {
+                console.error("Error al realizar la petición:", error);
+            }
+        } else {
+            dispatch(killSession());
+        }
+    };
+
+    fetchData();
+}, [token, dispatch]);
 
   return(
     <Routes>

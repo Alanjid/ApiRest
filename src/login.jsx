@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Axios from "axios";
 import * as yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
@@ -8,10 +7,12 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useDispatch } from 'react-redux';
 import { addUser } from './redux/userSlice';
+import getLogin from "./api/Login/getLogin";
 import { Box, Button, Checkbox, FormControlLabel, Grid, IconButton, InputAdornment, TextField, Typography,} from "@mui/material";
 import { Formik } from "formik";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from 'react-router-dom'
+import JWTdecrypt from "./api/Login/JWTdecrypt";
 
 
 function login() {
@@ -26,16 +27,48 @@ function login() {
     event.preventDefault();
   };
 
-  const [Nombre, setNombre] = useState("");
-  const [Pass, setPass] = useState("");
-
   const publicar = async (values) => {
-    await Axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
-      email: values.email,
-      password: values.password,
-      recordarme: values.recordarme,
+    const response = getLogin(values.email, values.password);
+    if(!(await response).message){
+      if((await response).status == 200){
+        /* console.log((await response).data.access); */
+        const datos = JWTdecrypt((await response).data.access);
+        console.log((await datos));
+        dispatch(addUser((await datos)))
+        noti.fire({
+          icon: 'success',
+          title: 'Acceso exitoso',
+          text: 'Bienvenido ',
+          timer: 2000,
+        })
+        navigate('/')
+      }
+    }else{
+      if((await response).response.status == 401){
+        noti.fire({
+          icon: 'error',
+          title: 'Acceso denegado',
+          text: 'Revisa que tus datos sean correctos',
+          timer: 2000,
+        })
+      }else{
+        const mensaje = (await response).message;
+        noti.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se puede iniciar seción actualmente',
+          footer: mensaje==="Network Error" ? "Intente Más Tarde" : mensaje
+        })
+      }
+    }
+    /* await Axios.post(`${import.meta.env.VITE_BACKEND_URL}/token/`, {
+      username: values.email,
+      password: values.password
     }).then((response) => {
-      if(response.data.token){
+      console.log(response)
+      if(response.status == 200){
+        console.log(response.data.access)
+        console.log(response.status)
         if(response.data.isactive === 1){
           dispatch(addUser(response.data))
           noti.fire({
@@ -64,11 +97,11 @@ function login() {
     }).catch(function(error){
       noti.fire({
         icon: 'error',
-        title: 'Oops...',
-        text: 'No se puede iniciar seción actualmente',
-        footer: JSON.parse(JSON.stringify(error)).message==="Network Error" ? "Intente Más Tarde" : JSON.parse(JSON.stringify(error)).message
+        title: 'Acceso denegado',
+        text: 'Revisa que tus datos sean correctos',
+        timer: 2000,
       })
-    });
+    }); */
   };
 
   return (
