@@ -44,7 +44,6 @@ function App(){
         if (token.token && token.rol) {
             try {
                 const response = await requireLogin(token);
-                console.log(response);
                 if(!response){
                   dispatch(killSession());
                 }

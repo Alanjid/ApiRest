@@ -15,8 +15,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addPaciente } from './redux/pacienteSlice';
 import { useNavigate, Link } from 'react-router-dom';
 import { selectCurrentRol } from './redux/userSlice';
-import { Carta } from './data/main';
-
 
 const handleClick = (karnet,dispatch,navigate)=>{
  
@@ -122,30 +120,28 @@ function index() {
   const [cartas, setCartas] = useState([])
   const [pacientes, setPacientes]=useState([])
   const [terapeutas, setTerapeutas]=useState([])
-  const correo_terapeuta = useSelector((state)=>state.user.correo)
   const [bandera, setBandera] = useState(false);
 
   useEffect(()=>{
    const getData = async ()=>{
-      if(Admin == 1){
+      if(Admin != "Terapeuta"){
         setIsAdmin(true)
         setBandera(true)
+        try {
+          const response2 = await fetchTerapeutas()
+          const data2 = await response2
+          console.log(data2);
+          setTerapeutas(format_data2(data2))
+        } catch (error) {
+          console.error(error)
+        }
       }
       try {
-        const response = await fetchData(correo_terapeuta)
+        const response = await fetchData()
         const data = await response
-        console.log(data);
         setPacientes(format_data(data))
       } catch (error) {
         console.error(error)        
-      }
-      try {
-        const response2 = await fetchTerapeutas(correo_terapeuta)
-        const data2 = await response2
-        console.log(data2);
-        setTerapeutas(format_data2(data2))
-      } catch (error) {
-        console.error(error)
       }
     } 
     
