@@ -31,4 +31,19 @@ const fetchData = async (correo) => {
       throw error; // Puedes manejar el error según tus necesidades
     }
   }; 
-export {fetchData, getPaciente}
+
+const fetchTerapeutas = async (correo) => {
+    try {
+      const response = await Axios.post(`${import.meta.env.VITE_BACKEND_URL}/terapeutaAdmin`,{
+          correo: correo
+      });
+      const data = await response;   
+      console.log(data)
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener datos:', error);
+      throw error; // Puedes manejar el error según tus necesidades
+    }
+  };
+
+export {fetchData, getPaciente, fetchTerapeutas}

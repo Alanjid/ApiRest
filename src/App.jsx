@@ -26,6 +26,7 @@ import Tareas from './scenes/tareas/index.jsx';
 import Paciente from './scenes/paciente/index.jsx';
 import Cuenta from './scenes/cuenta/index.jsx';
 import AñadirTerapeuta from './scenes/Añadir_Terapeuta/index.jsx';
+import AñadirTerapeuta1 from './scenes/Añadir_Terapeuta2/index.jsx';
 import AñadirPaciente from './scenes/Añadir_Paciente/index.jsx';
 import ActividadesRealizadas from './scenes/actividades_realizadas/index.jsx';
 import Añadirobservaciones from './scenes/Añadirobservaciones/index.jsx';
@@ -69,6 +70,7 @@ function App(){
           <Route path="/" element={<Index />} />
           <Route path="cuenta" element={<Cuenta />} />
           <Route path="añadirterapeuta" element={<AñadirTerapeuta />} />
+          <Route path="añadirterapeuta1" element={<AñadirTerapeuta1 />} />
           <Route path="añadirpaciente" element={<AñadirPaciente />} />
           <Route path="paciente/actividades-realizadas" element={<ActividadesRealizadas />} />
           <Route path="paciente/tareas" element={<Tareas />} />
